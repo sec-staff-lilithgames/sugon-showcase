@@ -34,8 +34,8 @@ nav a:hover,.header-link:hover { opacity:1; }
 .hero h1 { margin:0; font-family:"STSong","Songti SC",serif; font-size:clamp(56px,6.3vw,108px); font-weight:400; line-height:1.05; letter-spacing:-.055em; }
 .hero-intro { max-width:420px; margin:38px 0; color:rgba(255,255,255,.67); font-size:clamp(15px,1.2vw,18px); line-height:1.9; }
 .primary-link { display:inline-flex; align-items:center; gap:46px; padding:14px 0; border-bottom:1px solid rgba(255,255,255,.7); font-size:14px; }
-.hero-visual { position:relative; z-index:1; height:100svh; margin:0; }
-.hero-visual img { animation:hero-image 1.5s cubic-bezier(.2,.75,.2,1) both, hero-drift 18s ease-in-out 1.5s infinite alternate; }
+.hero-visual { position:relative; z-index:1; width:calc(100% + 14vw); height:100svh; margin:0 0 0 -14vw; }
+.hero-visual img { -webkit-mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.58) 13%,#000 30%); mask-image:linear-gradient(to right,transparent 0,rgba(0,0,0,.58) 13%,#000 30%); animation:hero-image 1.5s cubic-bezier(.2,.75,.2,1) both, hero-drift 18s ease-in-out 1.5s infinite alternate; }
 .hero-visual figcaption { position:absolute; z-index:3; right:32px; bottom:28px; display:flex; gap:28px; font:10px Arial,sans-serif; letter-spacing:.18em; color:rgba(255,255,255,.7); }
 
 .statement { display:grid; grid-template-columns:1fr 2.4fr; gap:8vw; padding:clamp(90px,12vw,190px) clamp(24px,8vw,130px); }
@@ -149,8 +149,8 @@ nav a:hover,.header-link:hover { opacity:1; }
   }
 }
 
-footer { display:grid; grid-template-columns:1fr auto auto; align-items:end; gap:50px; padding:70px clamp(24px,5vw,80px) 36px; background:#0e1118; color:white; }
-.footer-brand { font-family:Arial Black,sans-serif; font-size:clamp(60px,14vw,220px); line-height:.72; letter-spacing:-.08em; color:var(--red); }
+footer { display:grid; grid-template-columns:1fr auto auto; align-items:end; gap:50px; padding:70px clamp(24px,5vw,80px) 36px; overflow:hidden; background:#0e1118; color:white; }
+.footer-brand { font-family:Arial Black,sans-serif; font-size:clamp(60px,14vw,220px); line-height:.9; letter-spacing:-.08em; color:var(--red); }
 footer p { margin:0; white-space:nowrap; }
 .copyright { color:rgba(255,255,255,.38); font-size:10px; }
 
@@ -161,8 +161,8 @@ footer p { margin:0; white-space:nowrap; }
   .hero::after { background:linear-gradient(180deg,rgba(4,16,38,.9),rgba(4,16,38,.34) 65%); }
   .hero-copy { position:absolute; top:100px; padding:42px 24px; }
   .hero h1 { font-size:clamp(54px,14vw,82px); }
-  .hero-visual { height:920px; }
-  .hero-visual img { object-position:57% 50%; }
+  .hero-visual { width:auto; height:920px; margin:0; }
+  .hero-visual img { -webkit-mask-image:none; mask-image:none; object-position:57% 50%; }
   .statement { grid-template-columns:1fr; gap:58px; }
   .statement-copy>p:last-child { margin-left:0; }
   .campus-feature,.innovation,.future { grid-template-columns:1fr; }
