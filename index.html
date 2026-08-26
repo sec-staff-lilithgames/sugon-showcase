@@ -136,12 +136,53 @@ nav a:hover,.header-link:hover { opacity:1; }
   from { opacity:.1; transform:translateY(70px); }
   to { opacity:1; transform:translateY(0); }
 }
+@keyframes hero-copy-exit {
+  0%,58% { opacity:1; filter:blur(0); transform:translateX(0); }
+  100% { opacity:0; filter:blur(9px); transform:translateX(-72px); }
+}
+@keyframes statement-journey {
+  0% { opacity:0; clip-path:inset(0 0 100% 0); transform:translateY(54px); }
+  24%,72% { opacity:1; clip-path:inset(0); transform:translate(0); }
+  100% { opacity:0; clip-path:inset(0); transform:translateX(58px); }
+}
+@keyframes note-tilt {
+  0% { opacity:0; filter:blur(5px); transform:translateX(60px) skewY(3deg); }
+  28%,70% { opacity:1; filter:blur(0); transform:translate(0) skewY(0); }
+  100% { opacity:0; filter:blur(2px); transform:translateY(-42px) scale(.96); }
+}
+@keyframes innovation-sweep {
+  0% { opacity:0; filter:blur(12px); transform:translateX(92px); }
+  22%,74% { opacity:1; filter:blur(0); transform:translateX(0); }
+  100% { opacity:0; filter:blur(7px); transform:translateX(-48px); }
+}
+@keyframes moment-iris {
+  0% { opacity:0; clip-path:inset(0 52% 0 52%); transform:scale(.92); }
+  25%,72% { opacity:1; clip-path:inset(0); transform:scale(1); }
+  100% { opacity:0; clip-path:inset(0); transform:scale(1.055); }
+}
+@keyframes camp-converge {
+  0% { opacity:0; filter:blur(15px); transform:scale(.82) translateY(70px); }
+  27%,76% { opacity:1; filter:blur(0); transform:scale(1) translateY(0); }
+  100% { opacity:0; filter:blur(4px); transform:translateY(-76px) rotate(-.6deg); }
+}
+@keyframes future-drift {
+  0% { opacity:0; transform:translateX(78px) rotate(.8deg); }
+  24%,72% { opacity:1; transform:translate(0) rotate(0); }
+  100% { opacity:0; transform:translateY(-42px) scale(.965); }
+}
+@keyframes footer-rise {
+  0% { opacity:0; filter:blur(10px); transform:translateY(76px); }
+  42%,100% { opacity:1; filter:blur(0); transform:translateY(0); }
+}
 @supports (animation-timeline:view()) {
-  .statement-copy,.feature-note,.innovation-copy,.moment-heading,.camp-heading,.future-copy {
-    animation:section-reveal linear both;
-    animation-timeline:view();
-    animation-range:entry 8% cover 35%;
-  }
+  .hero-copy { animation:hero-copy-exit linear both; animation-timeline:view(); animation-range:cover 0% exit 100%; }
+  .statement-copy { animation:statement-journey linear both; animation-timeline:view(); animation-range:entry 0% exit 100%; }
+  .feature-note { animation:note-tilt linear both; animation-timeline:view(); animation-range:entry 0% exit 100%; }
+  .innovation-copy { animation:innovation-sweep linear both; animation-timeline:view(); animation-range:entry 0% exit 100%; }
+  .moment-heading { animation:moment-iris linear both; animation-timeline:view(); animation-range:entry 0% exit 100%; }
+  .camp-heading { animation:camp-converge linear both; animation-timeline:view(); animation-range:entry 0% exit 100%; }
+  .future-copy { animation:future-drift linear both; animation-timeline:view(); animation-range:entry 0% exit 100%; }
+  .footer-brand,footer p { animation:footer-rise linear both; animation-timeline:view(); animation-range:entry 0% cover 45%; }
   .image-frame,.innovation-art,.stage-image,.future-image {
     animation:section-reveal linear both;
     animation-timeline:view();
@@ -207,6 +248,7 @@ footer p { margin:0; white-space:nowrap; }
 @media (prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
   *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
+  .hero-copy,.statement-copy,.feature-note,.innovation-copy,.moment-heading,.camp-heading,.future-copy,.footer-brand,footer p { animation:none!important; opacity:1!important; filter:none!important; transform:none!important; clip-path:none!important; }
   .heart-photo,.heart-core,.heart-message { animation:none!important; }
   .mobile-heart-js .heart-photo { opacity:1!important; filter:none!important; transform:translate(var(--tx),var(--ty)) rotate(var(--tr)) scale(1)!important; transition:none!important; }
   .mobile-heart-js .heart-core { opacity:1!important; transform:translate(-50%,-50%) rotate(45deg) scale(1)!important; transition:none!important; }
