@@ -287,7 +287,7 @@ footer p { margin:0; white-space:nowrap; }
       if (!target) return;
       event.preventDefault();
       target.scrollIntoView({
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
+        behavior: 'auto',
         block: 'start',
       });
       window.history.replaceState(null, '', '#' + targetId);
