@@ -60,8 +60,13 @@ nav a:hover,.header-link:hover { opacity:1; }
 .feature-note>p:last-child { color:#6f6d68; line-height:1.9; }
 
 .innovation { --transition-from:var(--paper); position:relative; min-height:820px; display:grid; grid-template-columns:1fr 1fr; background:#0b1735; color:white; }
-.innovation-art { min-height:680px; background:#0b1735; overflow:hidden; }
+.innovation-art { position:relative; min-height:680px; background:#0b1735; overflow:hidden; }
 .innovation-art img { object-fit:contain; mix-blend-mode:screen; filter:invert(1); opacity:.92; transform:scale(1.08); }
+.circuit-base { position:relative; z-index:1; }
+.gear-motion { position:absolute; z-index:2; inset:0; display:block; overflow:hidden; pointer-events:none; background:#0b1735; transform-origin:50% 50%; animation-play-state:paused; }
+.gear-motion--outer { -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0 29%,rgba(0,0,0,.94) 34%,transparent 41%); mask-image:radial-gradient(circle at 50% 50%,#000 0 29%,rgba(0,0,0,.94) 34%,transparent 41%); animation:gear-turn 18s linear infinite; animation-play-state:paused; }
+.gear-motion--inner { z-index:3; -webkit-mask-image:radial-gradient(circle at 50% 50%,#000 0 12%,rgba(0,0,0,.92) 16%,transparent 21%); mask-image:radial-gradient(circle at 50% 50%,#000 0 12%,rgba(0,0,0,.92) 16%,transparent 21%); animation:gear-counterturn 11s linear infinite; animation-play-state:paused; }
+.innovation-art.is-gear-active .gear-motion { animation-play-state:running; }
 .innovation-copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(70px,8vw,130px); }
 .eyebrow--light { color:rgba(255,255,255,.7); }
 .kicker { margin:0; font-family:"STSong","Songti SC",serif; font-size:clamp(48px,5.5vw,88px); line-height:1.16; letter-spacing:-.05em; }
@@ -123,6 +128,12 @@ nav a:hover,.header-link:hover { opacity:1; }
 @keyframes hero-rise {
   from { opacity:0; transform:translateY(28px); }
   to { opacity:1; transform:translateY(0); }
+}
+@keyframes gear-turn {
+  to { transform:rotate(360deg); }
+}
+@keyframes gear-counterturn {
+  to { transform:rotate(-360deg); }
 }
 @keyframes hero-image {
   from { opacity:0; transform:scale(1.09); }
@@ -249,12 +260,13 @@ footer p { margin:0; white-space:nowrap; }
   html { scroll-behavior:auto; }
   *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
   .hero-copy,.statement-copy,.feature-note,.innovation-copy,.moment-heading,.camp-heading,.future-copy,.footer-brand,footer p { animation:none!important; opacity:1!important; filter:none!important; transform:none!important; clip-path:none!important; }
+  .gear-motion { animation:none!important; transform:none!important; }
   .heart-photo,.heart-core,.heart-message { animation:none!important; }
   .mobile-heart-js .heart-photo { opacity:1!important; filter:none!important; transform:translate(var(--tx),var(--ty)) rotate(var(--tr)) scale(1)!important; transition:none!important; }
   .mobile-heart-js .heart-core { opacity:1!important; transform:translate(-50%,-50%) rotate(45deg) scale(1)!important; transition:none!important; }
   .mobile-heart-js .heart-message { opacity:1!important; transform:translate(-50%,-42%) scale(1)!important; transition:none!important; }
 }
-</style></head><body><main><header class="site-header"><a class="brand" href="#top" aria-label="曙光首页"><span class="brand-mark">S</span><span>中科曙光</span></a><nav aria-label="主导航"><a href="#about">关于曙光</a><a href="#innovation">创新动能</a><a href="#moment">时代现场</a><a href="#camp">黄埔八期</a></nav><a class="header-link" href="https://www.sugon.com/" target="_blank" rel="noreferrer">了解更多 <span aria-hidden="true">↗</span></a></header><section class="hero" id="top"><div class="hero-copy"><p class="eyebrow"><span>01</span> 计算驱动未来</p><h1>让算力，<br/>抵达每一种未来。</h1><p class="hero-intro">从核心技术到产业生态，以先进计算构筑数字中国的坚实底座。</p><a class="primary-link" href="#about" data-scroll-target="about">开启探索 <span aria-hidden="true">↓</span></a></div><figure class="hero-visual"><img src="images/skyline-sunset.webp" alt="夕阳下的中科曙光大厦与城市天际线" width="1122" height="1402" loading="eager" fetchPriority="high" decoding="async"/><figcaption><span>40°03′N</span><span>北京 · 中国</span></figcaption></figure></section><section class="statement" id="about"><div class="section-label"><span>02</span><p>关于曙光<br/><small>ABOUT SUGON</small></p></div><div class="statement-copy"><p class="lead">以科技之光，照见数字世界的更多可能。</p><p>曙光持续深耕高端计算、存储、安全与数据中心等领域，让更强大的计算能力服务科研突破、产业升级与社会发展。</p></div></section><section class="campus-feature"><div class="image-frame image-frame--wide"><img src="images/campus-day.webp" alt="蓝天白云下的中科曙光产业创新中心" width="1122" height="1402" loading="lazy" decoding="async"/></div><div class="feature-note"><h2>创新，不止发生在实验室。</h2><p>开放协同，让技术穿越场景，汇聚成真实的产业动能。</p></div></section><section class="innovation" id="innovation"><div class="innovation-art"><img src="images/circuit.webp" alt="抽象计算芯片与电路图形" width="1254" height="1254" loading="lazy" decoding="async"/></div><div class="innovation-copy"><p class="eyebrow eyebrow--light"><span>03</span> 创新动能</p><p class="kicker">从一束微光，<br/>到万千算力。</p><p class="innovation-body">探索计算边界，将复杂系统凝练为稳定、开放、持续演进的数字基础设施。</p><div class="metrics" aria-label="创新关键词"><div><strong>高端计算</strong><small>COMPUTING</small></div><div><strong>智能存储</strong><small>STORAGE</small></div><div><strong>数字基础设施</strong><small>INFRASTRUCTURE</small></div></div></div></section><section class="moment" id="moment"><div class="moment-heading"><p class="eyebrow"><span>04</span> 时代现场</p><h2>曙光，因你而不凡。</h2><p>每一次相聚，都是面向未来的一次共同出发。</p></div><figure class="stage-image"><img src="images/event-stage.webp" alt="中科曙光活动现场，舞台上展示曙光因你而不凡" width="1672" height="941" loading="lazy" decoding="async"/><figcaption>年度盛会 / 共同见证</figcaption></figure></section><section class="camp-story" id="camp"><div class="camp-heading"><p class="eyebrow"><span>05</span> 荣耀时刻</p><h2>荣聚曙光，<br/>梦想启航。</h2><div class="camp-meta"><p>2026 中科曙光集团应届生训战营</p><span>黄埔八期 · 现场纪实</span></div></div><div class="heart-scroll"><div class="heart-sticky"><div class="heart-wall" aria-label="黄埔八期活动照片墙"><span class="heart-core" aria-hidden="true"></span><figure class="heart-photo"><img src="images/event-camp-06.webp" alt="荣聚曙光梦想启航应届生训战营主视觉" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-01.webp" alt="有所为有所不为主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-03.webp" alt="人生能有几回搏主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-05.webp" alt="应届生训战营国旗仪式现场" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-02.webp" alt="技术顶天应用立地主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-04.webp" alt="荣聚曙光梦想启航户外旗帜" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-07.webp" alt="训战营现场红色主题装置" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-08.webp" alt="前行必有曙光现场导视" width="1600" height="900" loading="lazy" decoding="async"/></figure><div class="heart-message"><span>08</span><strong>同心同行</strong><small>共赴新程</small></div></div></div></div></section><section class="future" id="future"><div class="future-image"><img src="images/supercomputing-center.webp" alt="国家超级计算互联网建筑与中国国旗" width="1448" height="1086" loading="lazy" decoding="async"/></div><div class="future-copy"><p class="eyebrow"><span>06</span> 共赴未来</p><h2>连接算力，<br/>连接无限可能。</h2><p>立足中国，服务全球。与每一位同行者，共建开放、普惠、可持续的先进计算生态。</p><a class="text-link" href="#top" data-scroll-target="top">回到顶部 <span aria-hidden="true">↑</span></a></div></section><footer><div class="footer-brand">Sugon</div><p>曙光，因你而不凡</p><p class="copyright">© 2026 中科曙光 · 概念展示页</p></footer></main><script data-heart-wall="mobile-observer">
+</style></head><body><main><header class="site-header"><a class="brand" href="#top" aria-label="曙光首页"><span class="brand-mark">S</span><span>中科曙光</span></a><nav aria-label="主导航"><a href="#about">关于曙光</a><a href="#innovation">创新动能</a><a href="#moment">时代现场</a><a href="#camp">黄埔八期</a></nav><a class="header-link" href="https://www.sugon.com/" target="_blank" rel="noreferrer">了解更多 <span aria-hidden="true">↗</span></a></header><section class="hero" id="top"><div class="hero-copy"><p class="eyebrow"><span>01</span> 计算驱动未来</p><h1>让算力，<br/>抵达每一种未来。</h1><p class="hero-intro">从核心技术到产业生态，以先进计算构筑数字中国的坚实底座。</p><a class="primary-link" href="#about" data-scroll-target="about">开启探索 <span aria-hidden="true">↓</span></a></div><figure class="hero-visual"><img src="images/skyline-sunset.webp" alt="夕阳下的中科曙光大厦与城市天际线" width="1122" height="1402" loading="eager" fetchPriority="high" decoding="async"/><figcaption><span>40°03′N</span><span>北京 · 中国</span></figcaption></figure></section><section class="statement" id="about"><div class="section-label"><span>02</span><p>关于曙光<br/><small>ABOUT SUGON</small></p></div><div class="statement-copy"><p class="lead">以科技之光，照见数字世界的更多可能。</p><p>曙光持续深耕高端计算、存储、安全与数据中心等领域，让更强大的计算能力服务科研突破、产业升级与社会发展。</p></div></section><section class="campus-feature"><div class="image-frame image-frame--wide"><img src="images/campus-day.webp" alt="蓝天白云下的中科曙光产业创新中心" width="1122" height="1402" loading="lazy" decoding="async"/></div><div class="feature-note"><h2>创新，不止发生在实验室。</h2><p>开放协同，让技术穿越场景，汇聚成真实的产业动能。</p></div></section><section class="innovation" id="innovation"><div class="innovation-art"><img class="circuit-base" src="images/circuit.webp" alt="抽象计算芯片与电路图形" width="1254" height="1254" loading="lazy" decoding="async"/><span class="gear-motion gear-motion--outer" aria-hidden="true"><img src="images/circuit.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async"/></span><span class="gear-motion gear-motion--inner" aria-hidden="true"><img src="images/circuit.webp" alt="" width="1254" height="1254" loading="lazy" decoding="async"/></span></div><div class="innovation-copy"><p class="eyebrow eyebrow--light"><span>03</span> 创新动能</p><p class="kicker">从一束微光，<br/>到万千算力。</p><p class="innovation-body">探索计算边界，将复杂系统凝练为稳定、开放、持续演进的数字基础设施。</p><div class="metrics" aria-label="创新关键词"><div><strong>高端计算</strong><small>COMPUTING</small></div><div><strong>智能存储</strong><small>STORAGE</small></div><div><strong>数字基础设施</strong><small>INFRASTRUCTURE</small></div></div></div></section><section class="moment" id="moment"><div class="moment-heading"><p class="eyebrow"><span>04</span> 时代现场</p><h2>曙光，因你而不凡。</h2><p>每一次相聚，都是面向未来的一次共同出发。</p></div><figure class="stage-image"><img src="images/event-stage.webp" alt="中科曙光活动现场，舞台上展示曙光因你而不凡" width="1672" height="941" loading="lazy" decoding="async"/><figcaption>年度盛会 / 共同见证</figcaption></figure></section><section class="camp-story" id="camp"><div class="camp-heading"><p class="eyebrow"><span>05</span> 荣耀时刻</p><h2>荣聚曙光，<br/>梦想启航。</h2><div class="camp-meta"><p>2026 中科曙光集团应届生训战营</p><span>黄埔八期 · 现场纪实</span></div></div><div class="heart-scroll"><div class="heart-sticky"><div class="heart-wall" aria-label="黄埔八期活动照片墙"><span class="heart-core" aria-hidden="true"></span><figure class="heart-photo"><img src="images/event-camp-06.webp" alt="荣聚曙光梦想启航应届生训战营主视觉" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-01.webp" alt="有所为有所不为主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-03.webp" alt="人生能有几回搏主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-05.webp" alt="应届生训战营国旗仪式现场" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-02.webp" alt="技术顶天应用立地主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-04.webp" alt="荣聚曙光梦想启航户外旗帜" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-07.webp" alt="训战营现场红色主题装置" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-08.webp" alt="前行必有曙光现场导视" width="1600" height="900" loading="lazy" decoding="async"/></figure><div class="heart-message"><span>08</span><strong>同心同行</strong><small>共赴新程</small></div></div></div></div></section><section class="future" id="future"><div class="future-image"><img src="images/supercomputing-center.webp" alt="国家超级计算互联网建筑与中国国旗" width="1448" height="1086" loading="lazy" decoding="async"/></div><div class="future-copy"><p class="eyebrow"><span>06</span> 共赴未来</p><h2>连接算力，<br/>连接无限可能。</h2><p>立足中国，服务全球。与每一位同行者，共建开放、普惠、可持续的先进计算生态。</p><a class="text-link" href="#top" data-scroll-target="top">回到顶部 <span aria-hidden="true">↑</span></a></div></section><footer><div class="footer-brand">Sugon</div><p>曙光，因你而不凡</p><p class="copyright">© 2026 中科曙光 · 概念展示页</p></footer></main><script data-heart-wall="mobile-observer">
 (() => {
   const wall = document.querySelector('.heart-scroll');
   if (!wall) return;
@@ -262,10 +274,12 @@ footer p { margin:0; white-space:nowrap; }
   const root = document.documentElement;
   const mobile = window.matchMedia('(max-width: 900px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const gear = document.querySelector('.innovation-art');
   const photos = Array.from(wall.querySelectorAll('.heart-photo'));
   const core = wall.querySelector('.heart-core');
   const message = wall.querySelector('.heart-message');
   let observer;
+  let gearObserver;
   let leaveTimer;
   let scrollTimer;
   let frame;
@@ -329,6 +343,16 @@ footer p { margin:0; white-space:nowrap; }
     frame = window.requestAnimationFrame(updateDesktop);
   };
 
+  const setupGear = () => {
+    gearObserver?.disconnect();
+    gear?.classList.remove('is-gear-active');
+    if (!gear || reducedMotion.matches) return;
+    gearObserver = new IntersectionObserver(([entry]) => {
+      gear.classList.toggle('is-gear-active', entry.isIntersecting);
+    }, { threshold: .18 });
+    gearObserver.observe(gear);
+  };
+
   document.querySelectorAll('[data-scroll-target]').forEach((link) => {
     link.addEventListener('click', (event) => {
       const targetId = link.getAttribute('data-scroll-target');
@@ -388,14 +412,18 @@ footer p { margin:0; white-space:nowrap; }
   };
 
   setup();
+  setupGear();
   mobile.addEventListener?.('change', setup);
+  reducedMotion.addEventListener?.('change', setupGear);
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', setup, { passive: true });
   window.addEventListener('pagehide', () => {
     observer?.disconnect();
+    gearObserver?.disconnect();
     cancelDesktop();
     window.removeEventListener('scroll', onScroll);
     window.removeEventListener('resize', setup);
+    reducedMotion.removeEventListener?.('change', setupGear);
   }, { once: true });
 })();
 </script></body></html>
