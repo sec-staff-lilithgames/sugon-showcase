@@ -286,9 +286,9 @@ footer p { margin:0; white-space:nowrap; }
       const target = targetId && document.getElementById(targetId);
       if (!target) return;
       event.preventDefault();
-      target.scrollIntoView({
-        behavior: 'auto',
-        block: 'start',
+      window.scrollTo({
+        top: target.getBoundingClientRect().top + window.scrollY,
+        behavior: 'instant',
       });
       window.history.replaceState(null, '', '#' + targetId);
     });
