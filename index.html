@@ -58,8 +58,7 @@ nav a:hover,.header-link:hover { opacity:1; }
 .image-frame--wide { height:min(78vw,920px); max-height:80svh; }
 .image-frame img,.stage-image img { transition:transform 1.2s cubic-bezier(.2,.7,.2,1); }
 .image-frame:hover img,.stage-image:hover img { transform:scale(1.025); }
-.image-frame--wide img { -webkit-mask-image:radial-gradient(ellipse 56% 56% at 48% 50%,#000 46%,rgba(0,0,0,.88) 70%,transparent 100%); mask-image:radial-gradient(ellipse 56% 56% at 48% 50%,#000 46%,rgba(0,0,0,.88) 70%,transparent 100%); }
-.stage-image img { -webkit-mask-image:radial-gradient(ellipse 58% 58% at center,#000 48%,rgba(0,0,0,.9) 72%,transparent 100%); mask-image:radial-gradient(ellipse 58% 58% at center,#000 48%,rgba(0,0,0,.9) 72%,transparent 100%); }
+.image-frame--wide img,.stage-image img { -webkit-mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%); -webkit-mask-composite:source-in; mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%); mask-composite:intersect; }
 .feature-note { border-top:1px solid var(--line); padding-top:22px; }
 .feature-note h2 { margin:52px 0 20px; font-family:"STSong","Songti SC",serif; font-size:clamp(30px,3vw,48px); font-weight:400; line-height:1.35; }
 .feature-note>p:last-child { color:#6f6d68; line-height:1.9; }
@@ -175,7 +174,7 @@ nav a:hover,.header-link:hover { opacity:1; }
 .camp-meta span { font-size:10px; letter-spacing:.16em; }
 .heart-scroll { position:relative; height:108svh; }
 .heart-scroll::after { content:""; position:absolute; z-index:6; left:50%; bottom:-1px; width:100vw; height:clamp(100px,13vw,180px); pointer-events:none; background:linear-gradient(to bottom,transparent,rgba(244,241,234,.64) 62%,#fff 100%); transform:translateX(-50%); }
-.heart-sticky { position:relative; height:100%; display:grid; place-items:center; overflow:hidden; isolation:isolate; -webkit-mask-image:radial-gradient(ellipse 56% 58% at center,#000 48%,rgba(0,0,0,.92) 70%,transparent 100%); mask-image:radial-gradient(ellipse 56% 58% at center,#000 48%,rgba(0,0,0,.92) 70%,transparent 100%); }
+.heart-sticky { position:relative; height:100%; display:grid; place-items:center; overflow:hidden; isolation:isolate; -webkit-mask-image:linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 8%,#000 92%,transparent 100%); -webkit-mask-composite:source-in; mask-image:linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 8%,#000 92%,transparent 100%); mask-composite:intersect; }
 .heart-sticky::before { content:""; position:absolute; z-index:-2; inset:-8%; background:url('images/event-camp-06.webp') center 48%/cover no-repeat; filter:blur(22px) saturate(.82) brightness(.52); opacity:.36; transform:scale(1.08); -webkit-mask-image:radial-gradient(ellipse 78% 72% at center,#000 5%,rgba(0,0,0,.82) 48%,transparent 86%); mask-image:radial-gradient(ellipse 78% 72% at center,#000 5%,rgba(0,0,0,.82) 48%,transparent 86%); }
 .heart-sticky::after { content:""; position:absolute; z-index:-1; inset:0; pointer-events:none; background:radial-gradient(ellipse 58% 62% at center,rgba(17,19,24,.04),rgba(17,19,24,.54) 68%,transparent 100%); }
 .heart-wall { position:relative; z-index:1; width:min(1180px,96vw); height:min(820px,96svh); }
@@ -226,7 +225,7 @@ nav a:hover,.header-link:hover { opacity:1; }
 
 .future { --transition-from:white; position:relative; display:grid; grid-template-columns:52% 48%; min-height:790px; background:white; }
 .future-image { min-height:650px; overflow:hidden; background:transparent; }
-.future-image img { -webkit-mask-image:radial-gradient(ellipse 58% 56% at 46% 50%,#000 48%,rgba(0,0,0,.88) 72%,transparent 100%); mask-image:radial-gradient(ellipse 58% 56% at 46% 50%,#000 48%,rgba(0,0,0,.88) 72%,transparent 100%); }
+.future-image img { -webkit-mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%); -webkit-mask-composite:source-in; mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%); mask-composite:intersect; }
 .future-copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(70px,5vw,82px); }
 .future-copy h2 { margin:0; font-family:"STSong","Songti SC",serif; font-size:clamp(46px,5vw,78px); font-weight:400; line-height:1.2; letter-spacing:-.045em; }
 .future-copy>p:not(.eyebrow) { margin:40px 0; color:#66645f; line-height:2; }
@@ -368,7 +367,6 @@ footer p { margin:0; white-space:nowrap; }
   .statement-copy>p:last-child { margin-left:0; }
   .campus-feature,.innovation,.stack,.supernode,.io500,.future { grid-template-columns:1fr; }
   .image-frame--wide { height:78svh; }
-  .image-frame--wide img { -webkit-mask-image:radial-gradient(ellipse 56% 56% at 50% 48%,#000 46%,rgba(0,0,0,.86) 70%,transparent 100%); mask-image:radial-gradient(ellipse 56% 56% at 50% 48%,#000 46%,rgba(0,0,0,.86) 70%,transparent 100%); }
   .feature-note { margin-inline:24px; }
   .innovation-art { min-height:auto; aspect-ratio:1; }
   .innovation-copy { padding:80px 24px; }
@@ -434,7 +432,6 @@ footer p { margin:0; white-space:nowrap; }
   .heart-user-wall[data-density="dense"] .heart-user-tile { width:min(23vw,98px); }
   .heart-upload { margin-top:18px; padding-bottom:7px; font-size:10px; letter-spacing:.08em; }
   .future-image { min-height:auto; height:72svh; }
-  .future-image img { -webkit-mask-image:radial-gradient(ellipse 58% 56% at 50% 48%,#000 48%,rgba(0,0,0,.86) 72%,transparent 100%); mask-image:radial-gradient(ellipse 58% 56% at 50% 48%,#000 48%,rgba(0,0,0,.86) 72%,transparent 100%); }
   .future-copy { padding:90px 24px; }
   footer { grid-template-columns:1fr; grid-template-areas:"brand" "tagline" "powered" "copyright"; row-gap:24px; min-height:66svh; padding:120px 24px 34px; overflow:hidden; }
   .footer-brand { gap:.004em; font-size:clamp(82px,25vw,138px); line-height:.76; }
