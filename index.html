@@ -65,8 +65,8 @@ nav a:hover,.header-link:hover { opacity:1; }
 
 .innovation { --transition-from:var(--paper); position:relative; min-height:820px; display:grid; grid-template-columns:1fr 1fr; background:#0b1735; color:white; }
 .innovation-art { position:relative; min-height:680px; background:#0b1735; overflow:hidden; }
-.innovation-art img { object-fit:contain; mix-blend-mode:screen; filter:invert(1); opacity:.92; transform:scale(1.08); }
-.circuit-base { position:relative; z-index:1; transform-origin:50% 50%; animation:gear-step-turn 7.2s steps(12,end) infinite; animation-play-state:paused; }
+.innovation-art img { object-fit:contain; mix-blend-mode:screen; filter:invert(1); opacity:.92; transform:translateY(4%) scale(.84); }
+.circuit-base { position:relative; z-index:1; transform-origin:50% 50%; animation:gear-step-turn 60s steps(60,end) infinite; animation-play-state:paused; }
 .innovation-art.is-gear-active .circuit-base { animation-play-state:running; }
 .innovation-copy { display:flex; flex-direction:column; justify-content:center; padding:clamp(70px,8vw,130px); }
 .eyebrow--light { color:rgba(255,255,255,.7); }
@@ -214,7 +214,7 @@ nav a:hover,.header-link:hover { opacity:1; }
   to { opacity:1; transform:translateY(0); }
 }
 @keyframes gear-step-turn {
-  to { transform:scale(1.08) rotate(360deg); }
+  to { transform:translateY(4%) scale(.84) rotate(360deg); }
 }
 @keyframes hero-image {
   from { opacity:0; transform:scale(1.09); }
@@ -395,7 +395,7 @@ footer p { margin:0; white-space:nowrap; }
   html { scroll-behavior:auto; }
   *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
   .hero-copy,.statement-copy,.feature-note,.innovation-copy,.stack-copy,.stack-item,.supernode-rack,.supernode-nebula,.io500-copy,.io500-poster,.zhengzhou-image img,.zhengzhou-copy,.moment-heading,.camp-heading,.future-copy,.footer-brand,footer p { animation:none!important; opacity:1!important; filter:none!important; transform:none!important; clip-path:none!important; }
-  .circuit-base { animation:none!important; transform:scale(1.08)!important; }
+  .circuit-base { animation:none!important; transform:translateY(4%) scale(.84)!important; }
   .heart-photo,.heart-core,.heart-message,.heart-user-tile,.heart-photo-flight { animation:none!important; }
   .heart-user-tile { transition:none!important; }
   .mobile-heart-js .heart-photo { opacity:1!important; filter:none!important; transform:translate(var(--tx),var(--ty)) rotate(var(--tr)) scale(1)!important; transition:none!important; }
