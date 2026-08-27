@@ -4,8 +4,8 @@
 
 :root { --ink:#111214; --paper:#f4f1ea; --red:#db2d35; --line:rgba(17,18,20,.16); }
 * { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
-body { margin:0; background:var(--paper); color:var(--ink); font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif; }
+html { overflow-x:hidden; scroll-behavior:smooth; }
+body { margin:0; overflow-x:hidden; background:var(--paper); color:var(--ink); font-family:"PingFang SC","Microsoft YaHei","Noto Sans CJK SC",Arial,sans-serif; }
 a { color:inherit; text-decoration:none; }
 img { display:block; width:100%; height:100%; object-fit:cover; }
 ::selection { background:var(--red); color:white; }
@@ -77,7 +77,65 @@ nav a:hover,.header-link:hover { opacity:1; }
 .metrics strong { font-size:14px; font-weight:500; }
 .metrics small { color:rgba(255,255,255,.36); font-size:8px; letter-spacing:.12em; }
 
-.moment { --transition-from:#0b1735; position:relative; padding:clamp(100px,13vw,200px) clamp(24px,5vw,80px); background:#ece8e0; }
+.stack { --transition-from:#0b1735; position:relative; display:grid; grid-template-columns:minmax(300px,.72fr) minmax(0,1.28fr); min-height:100svh; overflow:hidden; background:radial-gradient(circle at 82% 18%,rgba(205,218,232,.88),transparent 32%),linear-gradient(135deg,#f5f2eb 0%,#e9edf1 100%); }
+.stack-copy { position:relative; z-index:2; display:flex; flex-direction:column; justify-content:center; padding:clamp(90px,8vw,140px) clamp(24px,6vw,100px); }
+.stack-copy h2,.supernode-copy h2,.io500-copy h2,.zhengzhou-copy h2 { margin:0; font-family:"STSong","Songti SC",serif; font-size:clamp(48px,5.6vw,88px); font-weight:400; line-height:1.12; letter-spacing:-.05em; }
+.stack-copy>p:last-child,.supernode-copy>p:last-child { max-width:520px; margin:38px 0 0; color:#666a70; font-size:15px; line-height:2; }
+.stack-canvas { position:relative; min-height:820px; isolation:isolate; background:radial-gradient(ellipse 82% 72% at 52% 54%,rgba(255,255,255,.98) 0%,rgba(255,255,255,.76) 58%,transparent 92%); }
+.stack-canvas::before { content:""; position:absolute; inset:9% 5% 8%; border:1px solid rgba(22,46,77,.1); border-radius:50%; transform:rotate(-9deg); }
+.stack-item { position:absolute; margin:0; mix-blend-mode:darken; -webkit-mask-image:radial-gradient(ellipse 88% 82% at center,#000 60%,transparent 100%); mask-image:radial-gradient(ellipse 88% 82% at center,#000 60%,transparent 100%); }
+.stack-item img { object-fit:contain; mix-blend-mode:darken; filter:brightness(1.045) contrast(1.1) saturate(.94); -webkit-mask-image:radial-gradient(ellipse 78% 76% at center,#000 38%,rgba(0,0,0,.84) 59%,transparent 94%); mask-image:radial-gradient(ellipse 78% 76% at center,#000 38%,rgba(0,0,0,.84) 59%,transparent 94%); }
+.stack-item--compute { --enter-x:18vw; --enter-y:-12vh; --enter-r:5deg; z-index:2; top:6%; left:0; width:64%; }
+.stack-item--network { --enter-x:26vw; --enter-y:5vh; --enter-r:12deg; z-index:3; top:10%; right:-3%; width:43%; }
+.stack-item--storage { --enter-x:22vw; --enter-y:18vh; --enter-r:-8deg; z-index:4; top:42%; right:2%; width:54%; }
+.stack-item--cloudbase { --enter-x:0; --enter-y:22vh; --enter-r:0deg; z-index:1; left:-6%; bottom:12%; width:112%; }
+
+.supernode { --transition-from:#e9edf1; position:relative; display:grid; grid-template-columns:minmax(300px,.7fr) minmax(0,1.3fr); min-height:100svh; overflow:hidden; background:radial-gradient(circle at 72% 42%,rgba(154,190,224,.4),transparent 34%),linear-gradient(145deg,#edf1f4,#dce6ed); }
+.supernode-copy { position:relative; z-index:3; display:flex; flex-direction:column; justify-content:center; padding:clamp(90px,9vw,150px) clamp(24px,6vw,100px); }
+.supernode-stage { position:relative; min-height:780px; isolation:isolate; background:radial-gradient(ellipse 84% 76% at 52% 56%,rgba(248,251,253,.98) 0%,rgba(244,249,252,.72) 60%,transparent 94%); }
+.supernode-stage::before { content:"05"; position:absolute; right:2%; top:8%; color:rgba(20,55,90,.055); font:900 clamp(230px,34vw,560px)/.75 Arial Black,sans-serif; }
+.supernode-stage figure { position:absolute; margin:0; mix-blend-mode:darken; -webkit-mask-image:radial-gradient(ellipse 82% 80% at center,#000 58%,transparent 100%); mask-image:radial-gradient(ellipse 82% 80% at center,#000 58%,transparent 100%); }
+.supernode-stage img { object-fit:contain; mix-blend-mode:darken; filter:brightness(1.035) contrast(1.08) saturate(.96); -webkit-mask-image:radial-gradient(ellipse 80% 78% at center,#000 42%,rgba(0,0,0,.82) 64%,transparent 96%); mask-image:radial-gradient(ellipse 80% 78% at center,#000 42%,rgba(0,0,0,.82) 64%,transparent 96%); }
+.supernode-nebula img { filter:brightness(1.015) contrast(1.035) saturate(1.02); -webkit-mask-image:radial-gradient(ellipse 88% 84% at center,#000 55%,rgba(0,0,0,.88) 72%,transparent 98%); mask-image:radial-gradient(ellipse 88% 84% at center,#000 55%,rgba(0,0,0,.88) 72%,transparent 98%); }
+.supernode-rack { z-index:2; top:6%; left:0; width:58%; }
+.supernode-nebula { z-index:3; right:-2%; bottom:7%; width:66%; }
+.supernode-line { position:absolute; z-index:1; left:37%; top:52%; width:43%; height:1px; background:linear-gradient(90deg,transparent,var(--red),transparent); transform:rotate(-14deg); box-shadow:0 0 28px rgba(219,45,53,.5); }
+
+.io500 { --transition-from:#dce6ed; position:relative; display:grid; grid-template-columns:minmax(0,1.08fr) minmax(360px,.92fr); min-height:100svh; overflow:hidden; background:radial-gradient(circle at 76% 46%,rgba(144,22,30,.2),transparent 30%),#050608; color:white; }
+.io500-copy { position:relative; z-index:2; display:flex; flex-direction:column; justify-content:center; padding:clamp(90px,9vw,160px) clamp(24px,7vw,120px); }
+.io500-copy>p:not(.eyebrow) { max-width:630px; margin:38px 0 50px; color:rgba(255,255,255,.68); font-size:16px; line-height:2; }
+.io500-metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; border-top:1px solid rgba(255,255,255,.2); padding-top:26px; }
+.io500-metrics div { display:flex; flex-direction:column; gap:9px; }
+.io500-metrics strong { color:#fff0d8; font-size:clamp(20px,2.3vw,38px); font-weight:600; letter-spacing:-.04em; }
+.io500-metrics span { color:rgba(255,255,255,.46); font-size:9px; letter-spacing:.08em; }
+.io500-poster { position:relative; z-index:1; min-height:100svh; margin:0; overflow:hidden; }
+.io500-poster img { object-fit:cover; object-position:center; -webkit-mask-image:linear-gradient(to right,transparent 0,#000 24%); mask-image:linear-gradient(to right,transparent 0,#000 24%); }
+
+.zhengzhou { --transition-from:#050608; position:relative; min-height:100svh; overflow:hidden; background:#091322; color:white; isolation:isolate; }
+.zhengzhou::after { content:""; position:absolute; z-index:1; inset:0; background:linear-gradient(90deg,rgba(4,14,31,.92) 0%,rgba(4,14,31,.62) 42%,rgba(4,14,31,.08) 76%),linear-gradient(0deg,rgba(4,14,31,.78),transparent 55%); }
+.zhengzhou-image { position:absolute; z-index:0; inset:0; margin:0; }
+.zhengzhou-image img { object-fit:cover; object-position:center; transform:scale(1.03); }
+.zhengzhou-copy { position:relative; z-index:2; display:flex; min-height:100svh; max-width:760px; flex-direction:column; justify-content:flex-end; padding:clamp(100px,9vw,160px) clamp(24px,8vw,130px); text-shadow:0 3px 24px rgba(0,0,0,.58); }
+.zhengzhou-copy>p:last-child { max-width:680px; margin:38px 0 0; color:rgba(255,255,255,.78); font-size:16px; line-height:2; }
+
+.material-motion-js .stack-copy { opacity:0; transform:translateX(-70px); transition:opacity .72s ease,transform .92s cubic-bezier(.2,.76,.18,1); }
+.material-motion-js .stack-item { opacity:0; filter:blur(10px); transform:translate(var(--enter-x),var(--enter-y)) rotate(var(--enter-r)) scale(.78); transition:opacity .58s ease,filter .78s ease,transform .96s cubic-bezier(.2,.76,.18,1); }
+.material-motion-js .stack-item--network { transition-delay:.08s; }
+.material-motion-js .stack-item--storage { transition-delay:.16s; }
+.material-motion-js .stack-item--cloudbase { transition-delay:.24s; }
+.material-motion-js .stack.is-material-visible .stack-copy,.material-motion-js .stack.is-material-visible .stack-item { opacity:1; filter:blur(0); transform:translate(0) rotate(0) scale(1); }
+.material-motion-js .supernode-rack { opacity:0; transform:translateX(-28%) rotate(-5deg) scale(.76); transition:opacity .68s ease,transform 1s cubic-bezier(.2,.76,.18,1); }
+.material-motion-js .supernode-nebula { opacity:0; transform:translate(22%,18%) scale(.72); transition:opacity .7s .18s ease,transform 1.05s .18s cubic-bezier(.2,.76,.18,1); }
+.material-motion-js .supernode.is-material-visible .supernode-rack,.material-motion-js .supernode.is-material-visible .supernode-nebula { opacity:1; transform:translate(0) rotate(0) scale(1); }
+.material-motion-js .io500-copy { opacity:0; filter:blur(12px); transform:translateY(80px); transition:opacity .72s ease,filter .82s ease,transform .94s cubic-bezier(.2,.76,.18,1); }
+.material-motion-js .io500-poster { opacity:0; clip-path:inset(50% 0 50% 0); transform:scale(1.1); transition:opacity .72s .12s ease,clip-path 1.05s .12s cubic-bezier(.2,.76,.18,1),transform 1.05s .12s cubic-bezier(.2,.76,.18,1); }
+.material-motion-js .io500.is-material-visible .io500-copy,.material-motion-js .io500.is-material-visible .io500-poster { opacity:1; filter:blur(0); clip-path:inset(0); transform:translate(0) scale(1); }
+.material-motion-js .zhengzhou-image img { transform:scale(1.13) translate3d(2%,1%,0); transition:transform 1.8s cubic-bezier(.2,.76,.18,1); }
+.material-motion-js .zhengzhou-copy { opacity:0; clip-path:inset(0 0 100% 0); transform:translateY(64px); transition:opacity .72s ease,clip-path 1s cubic-bezier(.2,.76,.18,1),transform 1s cubic-bezier(.2,.76,.18,1); }
+.material-motion-js .zhengzhou.is-material-visible .zhengzhou-image img { transform:scale(1.03); }
+.material-motion-js .zhengzhou.is-material-visible .zhengzhou-copy { opacity:1; clip-path:inset(0); transform:translateY(0); }
+
+.moment { --transition-from:#091322; position:relative; padding:clamp(100px,13vw,200px) clamp(24px,5vw,80px); background:#ece8e0; }
 .moment-heading { display:grid; grid-template-columns:.6fr 1.5fr .8fr; gap:4vw; align-items:end; margin-bottom:70px; }
 .moment-heading .eyebrow { margin:0; }
 .moment-title { display:flex; flex-direction:column; align-items:flex-start; }
@@ -89,7 +147,7 @@ nav a:hover,.header-link:hover { opacity:1; }
 .stage-image figcaption { position:absolute; right:24px; bottom:20px; padding:0; background:transparent; color:white; text-shadow:0 2px 12px rgba(0,0,0,.8); font-size:11px; letter-spacing:.15em; }
 
 .camp-story { --transition-from:#ece8e0; position:relative; padding:clamp(100px,12vw,190px) clamp(24px,5vw,80px) 0; background:radial-gradient(circle at 16% 56%,rgba(104,29,38,.28),transparent 34%),radial-gradient(circle at 82% 18%,#33181b 0,transparent 28%),#111318; color:white; overflow:hidden; }
-.camp-story::before { content:"08"; position:absolute; top:10%; right:-.06em; color:rgba(255,255,255,.025); font:900 clamp(240px,42vw,720px)/.72 Arial Black,sans-serif; letter-spacing:-.12em; pointer-events:none; }
+.camp-story::before { content:"09"; position:absolute; top:10%; right:-.06em; color:rgba(255,255,255,.025); font:900 clamp(240px,42vw,720px)/.72 Arial Black,sans-serif; letter-spacing:-.12em; pointer-events:none; }
 .camp-heading { display:grid; grid-template-columns:.65fr 1.45fr .75fr; gap:4vw; align-items:end; margin-bottom:clamp(64px,8vw,120px); }
 .camp-heading .eyebrow { align-self:start; margin:0; color:rgba(255,255,255,.62); }
 .camp-heading h2 { margin:0; font-family:"STSong","Songti SC",serif; font-size:clamp(52px,6.2vw,98px); font-weight:400; line-height:1.08; letter-spacing:-.055em; }
@@ -181,6 +239,41 @@ nav a:hover,.header-link:hover { opacity:1; }
   22%,74% { opacity:1; filter:blur(0); transform:translateX(0); }
   100% { opacity:0; filter:blur(7px); transform:translateX(-48px); }
 }
+@keyframes stack-copy-in {
+  0% { opacity:0; transform:translateX(-70px); }
+  28%,78% { opacity:1; transform:translateX(0); }
+  100% { opacity:0; transform:translateY(-36px); }
+}
+@keyframes stack-part-in {
+  0% { opacity:0; filter:blur(10px); transform:translate(var(--enter-x),var(--enter-y)) rotate(var(--enter-r)) scale(.78); }
+  34%,100% { opacity:1; filter:blur(0); transform:translate(0) rotate(0) scale(1); }
+}
+@keyframes supernode-rack-in {
+  0% { opacity:0; transform:translateX(-28%) rotate(-5deg) scale(.76); }
+  36%,100% { opacity:1; transform:translate(0) rotate(0) scale(1); }
+}
+@keyframes supernode-nebula-in {
+  0%,18% { opacity:0; transform:translate(22%,18%) scale(.72); }
+  62%,100% { opacity:1; transform:translate(0) scale(1); }
+}
+@keyframes io500-copy-in {
+  0% { opacity:0; filter:blur(12px); transform:translateY(80px); }
+  28%,78% { opacity:1; filter:blur(0); transform:translateY(0); }
+  100% { opacity:.3; transform:translateY(-28px); }
+}
+@keyframes io500-poster-in {
+  0% { opacity:0; clip-path:inset(50% 0 50% 0); transform:scale(1.12); }
+  38%,100% { opacity:1; clip-path:inset(0); transform:scale(1); }
+}
+@keyframes zhengzhou-image-drift {
+  0% { transform:scale(1.12) translate3d(2%,1%,0); }
+  100% { transform:scale(1.02) translate3d(-1%,0,0); }
+}
+@keyframes zhengzhou-copy-in {
+  0% { opacity:0; clip-path:inset(0 0 100% 0); transform:translateY(64px); }
+  34%,80% { opacity:1; clip-path:inset(0); transform:translateY(0); }
+  100% { opacity:.2; transform:translateY(-48px); }
+}
 @keyframes moment-iris {
   0% { opacity:0; clip-path:inset(0 52% 0 52%); transform:scale(.92); }
   25%,72% { opacity:1; clip-path:inset(0); transform:scale(1); }
@@ -217,7 +310,7 @@ nav a:hover,.header-link:hover { opacity:1; }
 }
 
 footer { --transition-from:white; position:relative; display:grid; grid-template-columns:1fr auto auto; align-items:end; gap:50px; padding:70px clamp(24px,5vw,80px) 36px; overflow:hidden; background:#0e1118; color:white; }
-.statement::before,.innovation::before,.moment::before,.future::before,footer::before,.camp-story::after { content:""; position:absolute; z-index:5; inset:0 0 auto; height:clamp(56px,6vw,96px); pointer-events:none; background:linear-gradient(to bottom,var(--transition-from),transparent); }
+.statement::before,.innovation::before,.stack::before,.supernode::before,.io500::before,.zhengzhou::before,.moment::before,.future::before,footer::before,.camp-story::after { content:""; position:absolute; z-index:5; inset:0 0 auto; height:clamp(56px,6vw,96px); pointer-events:none; background:linear-gradient(to bottom,var(--transition-from),transparent); }
 .footer-brand { font-family:Arial Black,sans-serif; font-size:clamp(60px,14vw,220px); line-height:.9; letter-spacing:-.08em; color:var(--red); }
 footer p { margin:0; white-space:nowrap; }
 .copyright { color:rgba(255,255,255,.38); font-size:10px; }
@@ -233,13 +326,31 @@ footer p { margin:0; white-space:nowrap; }
   .hero-visual img { -webkit-mask-image:none; mask-image:none; object-position:57% 50%; }
   .statement { grid-template-columns:1fr; gap:58px; }
   .statement-copy>p:last-child { margin-left:0; }
-  .campus-feature,.innovation,.future { grid-template-columns:1fr; }
+  .campus-feature,.innovation,.stack,.supernode,.io500,.future { grid-template-columns:1fr; }
   .image-frame--wide { height:78svh; }
   .image-frame--wide img { -webkit-mask-image:linear-gradient(to bottom,#000 0 78%,rgba(0,0,0,.84) 87%,transparent 100%); mask-image:linear-gradient(to bottom,#000 0 78%,rgba(0,0,0,.84) 87%,transparent 100%); }
   .feature-note { margin-inline:24px; }
   .innovation-art { min-height:auto; aspect-ratio:1; }
   .innovation-copy { padding:80px 24px; }
   .metrics { gap:8px; }
+  .stack-copy,.supernode-copy,.io500-copy { padding:90px 24px 64px; }
+  .stack-canvas { min-height:680px; }
+  .stack-item--compute { top:2%; left:-5%; width:86%; }
+  .stack-item--network { top:22%; right:-8%; width:61%; }
+  .stack-item--storage { top:45%; right:-4%; width:78%; }
+  .stack-item--cloudbase { left:-8%; bottom:11%; width:122%; }
+  .supernode-stage { min-height:650px; }
+  .supernode-rack { top:1%; left:-11%; width:82%; }
+  .supernode-nebula { right:-7%; bottom:7%; width:94%; }
+  .supernode-line { left:18%; top:50%; width:70%; }
+  .io500-metrics { grid-template-columns:1fr; gap:16px; }
+  .io500-metrics div { flex-direction:row; align-items:baseline; justify-content:space-between; }
+  .io500-poster { min-height:auto; height:108svh; }
+  .io500-poster img { object-fit:contain; -webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 10%); mask-image:linear-gradient(to bottom,transparent 0,#000 10%); }
+  .zhengzhou { min-height:900px; }
+  .zhengzhou-image img { object-position:58% center; }
+  .zhengzhou-copy { min-height:900px; padding:100px 24px 82px; }
+  .zhengzhou-copy h2 { font-size:clamp(48px,13vw,72px); }
   .moment-heading { grid-template-columns:1fr; }
   .stage-image { width:calc(100% + 48px); height:62vw; min-height:300px; margin-left:-24px; }
   .camp-heading { grid-template-columns:1fr; gap:36px; }
@@ -278,7 +389,7 @@ footer p { margin:0; white-space:nowrap; }
 @media (prefers-reduced-motion:reduce) {
   html { scroll-behavior:auto; }
   *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
-  .hero-copy,.statement-copy,.feature-note,.innovation-copy,.moment-heading,.camp-heading,.future-copy,.footer-brand,footer p { animation:none!important; opacity:1!important; filter:none!important; transform:none!important; clip-path:none!important; }
+  .hero-copy,.statement-copy,.feature-note,.innovation-copy,.stack-copy,.stack-item,.supernode-rack,.supernode-nebula,.io500-copy,.io500-poster,.zhengzhou-image img,.zhengzhou-copy,.moment-heading,.camp-heading,.future-copy,.footer-brand,footer p { animation:none!important; opacity:1!important; filter:none!important; transform:none!important; clip-path:none!important; }
   .circuit-base { animation:none!important; transform:scale(1.08)!important; }
   .heart-photo,.heart-core,.heart-message,.heart-user-tile,.heart-photo-flight { animation:none!important; }
   .heart-user-tile { transition:none!important; }
@@ -287,7 +398,7 @@ footer p { margin:0; white-space:nowrap; }
   .mobile-heart-js .heart-message { opacity:1!important; transform:translate(-50%,-42%) scale(1)!important; transition:none!important; }
 }
 
-</style></head><body><main><header class="site-header"><a class="brand" href="#top" aria-label="曙光首页"><span class="brand-mark">S</span><span>中科曙光</span></a><nav aria-label="主导航"><a href="#about">关于曙光</a><a href="#innovation">创新动能</a><a href="#moment">时代现场</a><a href="#camp">黄埔八期</a></nav><a class="header-link" href="https://www.sugon.com/" target="_blank" rel="noreferrer">了解更多 <span aria-hidden="true">↗</span></a></header><section class="hero" id="top"><div class="hero-copy"><p class="eyebrow"><span>01</span> 计算驱动未来</p><h1>让算力，<br/>抵达每一种未来。</h1><p class="hero-intro">从核心技术到产业生态，以先进计算构筑数字中国的坚实底座。</p><a class="primary-link" href="#about" data-scroll-target="about">开启探索 <span aria-hidden="true">↓</span></a></div><figure class="hero-visual"><img src="images/skyline-sunset.webp" alt="夕阳下的中科曙光大厦与城市天际线" width="1122" height="1402" loading="eager" fetchPriority="high" decoding="async"/><figcaption><span>40°03′N</span><span>北京 · 中国</span></figcaption></figure></section><section class="statement" id="about"><div class="section-label"><span>02</span><p>关于曙光<br/><small>ABOUT SUGON</small></p></div><div class="statement-copy"><p class="lead">以科技之光，照见数字世界的更多可能。</p><p>曙光持续深耕高端计算、存储、安全与数据中心等领域，让更强大的计算能力服务科研突破、产业升级与社会发展。</p></div></section><section class="campus-feature"><div class="image-frame image-frame--wide"><img src="images/campus-day.webp" alt="蓝天白云下的中科曙光产业创新中心" width="1122" height="1402" loading="lazy" decoding="async"/></div><div class="feature-note"><h2>创新，不止发生在实验室。</h2><p>开放协同，让技术穿越场景，汇聚成真实的产业动能。</p></div></section><section class="innovation" id="innovation"><div class="innovation-art"><img class="circuit-base" src="images/circuit.webp" alt="抽象计算芯片与电路图形" width="1254" height="1254" loading="lazy" decoding="async"/></div><div class="innovation-copy"><p class="eyebrow eyebrow--light"><span>03</span> 创新动能</p><p class="kicker">从一束微光，<br/>到万千算力。</p><p class="innovation-body">探索计算边界，将复杂系统凝练为稳定、开放、持续演进的数字基础设施。</p><div class="metrics" aria-label="创新关键词"><div><strong>高端计算</strong><small>COMPUTING</small></div><div><strong>智能存储</strong><small>STORAGE</small></div><div><strong>数字基础设施</strong><small>INFRASTRUCTURE</small></div></div></div></section><section class="moment" id="moment"><div class="moment-heading"><p class="eyebrow"><span>04</span> 时代现场</p><div class="moment-title"><h2>曙光，因你而不凡。</h2><a class="join-link" href="https://sugon.zhiye.com" target="_blank" rel="noreferrer">加入我们 <span aria-hidden="true">↗</span></a></div><p>每一次相聚，都是面向未来的一次共同出发。</p></div><figure class="stage-image"><img src="images/event-stage.webp" alt="中科曙光活动现场，舞台上展示曙光因你而不凡" width="1672" height="941" loading="lazy" decoding="async"/><figcaption>年度盛会 / 共同见证</figcaption></figure></section><section class="camp-story" id="camp"><div class="camp-heading"><p class="eyebrow"><span>05</span> 荣耀时刻</p><h2>荣聚曙光，<br/>梦想启航。</h2><div class="camp-meta"><p>2026 中科曙光集团应届生训战营</p><span>黄埔八期 · 现场纪实</span></div></div><div class="heart-scroll"><div class="heart-sticky"><div class="heart-wall" aria-label="黄埔八期活动照片墙"><span class="heart-core" aria-hidden="true"></span><figure class="heart-photo"><img src="images/event-camp-06.webp" alt="荣聚曙光梦想启航应届生训战营主视觉" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-01.webp" alt="有所为有所不为主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-03.webp" alt="人生能有几回搏主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-05.webp" alt="应届生训战营国旗仪式现场" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-02.webp" alt="技术顶天应用立地主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-04.webp" alt="荣聚曙光梦想启航户外旗帜" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-07.webp" alt="训战营现场红色主题装置" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-08.webp" alt="前行必有曙光现场导视" width="1600" height="900" loading="lazy" decoding="async"/></figure><div class="heart-user-wall" data-user-photo data-density="small" aria-hidden="true"></div><div class="heart-message"><span>08</span><strong>同心同行</strong><small>共赴新程</small><label class="heart-upload"><span data-heart-upload-label>＋ 上传我的瞬间</span><input data-heart-upload type="file" accept="image/*" aria-label="上传一张照片加入照片墙"/></label></div><div class="heart-flight-layer" data-flight-photo aria-hidden="true"></div></div></div></div></section><section class="future" id="future"><div class="future-image"><img src="images/supercomputing-center.webp" alt="国家超级计算互联网建筑与中国国旗" width="1448" height="1086" loading="lazy" decoding="async"/></div><div class="future-copy"><p class="eyebrow"><span>06</span> 共赴未来</p><h2>连接算力，<br/>连接无限可能。</h2><p>立足中国，服务全球。与每一位同行者，共建开放、普惠、可持续的先进计算生态。</p><a class="text-link" href="#top" data-scroll-target="top">回到顶部 <span aria-hidden="true">↑</span></a></div></section><footer><div class="footer-brand">Sugon</div><p>曙光，因你而不凡</p><p class="copyright">© 2026 中科曙光 · 概念展示页</p></footer></main><script data-heart-wall="mobile-observer">
+</style></head><body><main><header class="site-header"><a class="brand" href="#top" aria-label="曙光首页"><span class="brand-mark">S</span><span>中科曙光</span></a><nav aria-label="主导航"><a href="#about">关于曙光</a><a href="#innovation">技术全景</a><a href="#io500">前沿成果</a><a href="#moment">时代现场</a><a href="#camp">黄埔八期</a></nav><a class="header-link" href="https://www.sugon.com/" target="_blank" rel="noreferrer">了解更多 <span aria-hidden="true">↗</span></a></header><section class="hero" id="top"><div class="hero-copy"><p class="eyebrow"><span>01</span> 计算驱动未来</p><h1>让算力，<br/>抵达每一种未来。</h1><p class="hero-intro">从核心技术到产业生态，以先进计算构筑数字中国的坚实底座。</p><a class="primary-link" href="#about" data-scroll-target="about">开启探索 <span aria-hidden="true">↓</span></a></div><figure class="hero-visual"><img src="images/skyline-sunset.webp" alt="夕阳下的中科曙光大厦与城市天际线" width="1122" height="1402" loading="eager" fetchPriority="high" decoding="async"/><figcaption><span>40°03′N</span><span>北京 · 中国</span></figcaption></figure></section><section class="statement" id="about"><div class="section-label"><span>02</span><p>关于曙光<br/><small>ABOUT SUGON</small></p></div><div class="statement-copy"><p class="lead">以科技之光，照见数字世界的更多可能。</p><p>曙光持续深耕高端计算、存储、安全与数据中心等领域，让更强大的计算能力服务科研突破、产业升级与社会发展。</p></div></section><section class="campus-feature"><div class="image-frame image-frame--wide"><img src="images/campus-day.webp" alt="蓝天白云下的中科曙光产业创新中心" width="1122" height="1402" loading="lazy" decoding="async"/></div><div class="feature-note"><h2>创新，不止发生在实验室。</h2><p>开放协同，让技术穿越场景，汇聚成真实的产业动能。</p></div></section><section class="innovation" id="innovation"><div class="innovation-art"><img class="circuit-base" src="images/circuit.webp" alt="抽象计算芯片与电路图形" width="1254" height="1254" loading="lazy" decoding="async"/></div><div class="innovation-copy"><p class="eyebrow eyebrow--light"><span>03</span> 创新动能</p><p class="kicker">从一束微光，<br/>到万千算力。</p><p class="innovation-body">探索计算边界，将复杂系统凝练为稳定、开放、持续演进的数字基础设施。</p><div class="metrics" aria-label="创新关键词"><div><strong>高端计算</strong><small>COMPUTING</small></div><div><strong>智能存储</strong><small>STORAGE</small></div><div><strong>数字基础设施</strong><small>INFRASTRUCTURE</small></div></div></div></section><section class="stack" id="stack" data-material-chapter=""><div class="stack-copy"><p class="eyebrow"><span>04</span> 全栈底座</p><h2>从一颗芯片，<br/>抵达一座算力中心。</h2><p>计算、网络、存储与基础设施协同演进，让复杂算力被组织、连接并持续释放。</p></div><div class="stack-canvas" aria-label="曙光全栈算力产品"><figure class="stack-item stack-item--compute"><img src="images/material-compute.webp" alt="国产高性能计算系统 scaleX" width="627" height="300" loading="lazy" decoding="async"/></figure><figure class="stack-item stack-item--network"><img src="images/material-network.webp" alt="国产 IB 原生无损 RDMA 高速网络 scaleFabric" width="459" height="287" loading="lazy" decoding="async"/></figure><figure class="stack-item stack-item--storage"><img src="images/material-storage.webp" alt="集中式与分布式存储系统" width="546" height="291" loading="lazy" decoding="async"/></figure><figure class="stack-item stack-item--cloudbase"><img src="images/material-cloudbase.webp" alt="曙光 CloudBASE 高密度液冷算力中心" width="1734" height="147" loading="lazy" decoding="async"/></figure></div></section><section class="supernode" id="supernode" data-material-chapter=""><div class="supernode-copy"><p class="eyebrow"><span>05</span> 超节点</p><h2>模块聚合，<br/>系统跃迁。</h2><p>从标准化计算单元到高密度系统，以模块化组合承载更大规模的先进计算。</p></div><div class="supernode-stage"><figure class="supernode-rack"><img src="images/material-supernode.webp" alt="超节点模块组合示意" width="738" height="632" loading="lazy" decoding="async"/></figure><span class="supernode-line" aria-hidden="true"></span><figure class="supernode-nebula"><img src="images/material-nebula.webp" alt="曙光硅立方超级计算系统" width="768" height="432" loading="lazy" decoding="async"/></figure></div></section><section class="io500" id="io500" data-material-chapter=""><div class="io500-copy"><p class="eyebrow eyebrow--light"><span>06</span> 全球第一</p><h2>双料冠军，<br/>刷新世界纪录。</h2><p>2026 年 6 月，ParaStor F9000 全闪存储系统在 IO500 生产型全节点和 10 节点榜单中实现双榜第一。</p><div class="io500-metrics" aria-label="IO500 核心数据"><div><strong>26888.39</strong><span>GiB/s · 带宽</span></div><div><strong>232,754.76</strong><span>kIOP/s · 元数据性能</span></div><div><strong>171.67%</strong><span>世界纪录提升</span></div></div></div><figure class="io500-poster"><img src="images/material-io500.webp" alt="中科曙光 ParaStor IO500 全球双榜第一" width="1080" height="1439" loading="lazy" decoding="async"/></figure></section><section class="zhengzhou" id="zhengzhou" data-material-chapter=""><figure class="zhengzhou-image"><img src="images/material-zhengzhou.webp" alt="国家超算互联网郑州核心节点航拍" width="1920" height="1080" loading="lazy" decoding="async"/></figure><div class="zhengzhou-copy"><p class="eyebrow eyebrow--light"><span>07</span> 核心节点</p><h2>十万卡级算力，<br/>落地郑州。</h2><p>国家超算互联网核心节点正式上线运行。作为全国首个十万卡级超智融合算力资源池，为大模型研发、科学智能体等前沿创新提供先进、高效、普惠的算力支撑。</p></div></section><section class="moment" id="moment"><div class="moment-heading"><p class="eyebrow"><span>08</span> 时代现场</p><div class="moment-title"><h2>曙光，因你而不凡。</h2><a class="join-link" href="https://sugon.zhiye.com" target="_blank" rel="noreferrer">加入我们 <span aria-hidden="true">↗</span></a></div><p>每一次相聚，都是面向未来的一次共同出发。</p></div><figure class="stage-image"><img src="images/event-stage.webp" alt="中科曙光活动现场，舞台上展示曙光因你而不凡" width="1672" height="941" loading="lazy" decoding="async"/><figcaption>年度盛会 / 共同见证</figcaption></figure></section><section class="camp-story" id="camp"><div class="camp-heading"><p class="eyebrow"><span>09</span> 荣耀时刻</p><h2>荣聚曙光，<br/>梦想启航。</h2><div class="camp-meta"><p>2026 中科曙光集团应届生训战营</p><span>黄埔八期 · 现场纪实</span></div></div><div class="heart-scroll"><div class="heart-sticky"><div class="heart-wall" aria-label="黄埔八期活动照片墙"><span class="heart-core" aria-hidden="true"></span><figure class="heart-photo"><img src="images/event-camp-06.webp" alt="荣聚曙光梦想启航应届生训战营主视觉" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-01.webp" alt="有所为有所不为主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-03.webp" alt="人生能有几回搏主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-05.webp" alt="应届生训战营国旗仪式现场" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-02.webp" alt="技术顶天应用立地主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-04.webp" alt="荣聚曙光梦想启航户外旗帜" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-07.webp" alt="训战营现场红色主题装置" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-08.webp" alt="前行必有曙光现场导视" width="1600" height="900" loading="lazy" decoding="async"/></figure><div class="heart-user-wall" data-user-photo data-density="small" aria-hidden="true"></div><div class="heart-message"><span>08</span><strong>同心同行</strong><small>共赴新程</small><label class="heart-upload"><span data-heart-upload-label>＋ 上传我的瞬间</span><input data-heart-upload type="file" accept="image/*" aria-label="上传一张照片加入照片墙"/></label></div><div class="heart-flight-layer" data-flight-photo aria-hidden="true"></div></div></div></div></section><section class="future" id="future"><div class="future-image"><img src="images/supercomputing-center.webp" alt="国家超级计算互联网建筑与中国国旗" width="1448" height="1086" loading="lazy" decoding="async"/></div><div class="future-copy"><p class="eyebrow"><span>10</span> 共赴未来</p><h2>连接算力，<br/>连接无限可能。</h2><p>立足中国，服务全球。与每一位同行者，共建开放、普惠、可持续的先进计算生态。</p><a class="text-link" href="#top" data-scroll-target="top">回到顶部 <span aria-hidden="true">↑</span></a></div></section><footer><div class="footer-brand">Sugon</div><p>曙光，因你而不凡</p><p class="copyright">© 2026 中科曙光 · 概念展示页</p></footer></main><script data-heart-wall="mobile-observer">
 
 (() => {
   const wall = document.querySelector('.heart-scroll');
@@ -297,6 +408,7 @@ footer p { margin:0; white-space:nowrap; }
   const mobile = window.matchMedia('(max-width: 900px)');
   const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   const gear = document.querySelector('.innovation-art');
+  const materialChapters = Array.from(document.querySelectorAll('[data-material-chapter]'));
   const photos = Array.from(wall.querySelectorAll('.heart-photo'));
   const core = wall.querySelector('.heart-core');
   const message = wall.querySelector('.heart-message');
@@ -306,6 +418,7 @@ footer p { margin:0; white-space:nowrap; }
   const flightLayer = wall.querySelector('[data-flight-photo]');
   let observer;
   let gearObserver;
+  let materialObserver;
   let leaveTimer;
   let scrollTimer;
   let frame;
@@ -378,6 +491,17 @@ footer p { margin:0; white-space:nowrap; }
       gear.classList.toggle('is-gear-active', entry.isIntersecting);
     }, { threshold: .18 });
     gearObserver.observe(gear);
+  };
+
+  const setupMaterialMotion = () => {
+    materialObserver?.disconnect();
+    root.classList.add('material-motion-js');
+    materialChapters.forEach((chapter) => chapter.classList.toggle('is-material-visible', reducedMotion.matches));
+    if (reducedMotion.matches) return;
+    materialObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => entry.target.classList.toggle('is-material-visible', entry.isIntersecting));
+    }, { threshold: .16, rootMargin: '-8% 0px -8% 0px' });
+    materialChapters.forEach((chapter) => materialObserver.observe(chapter));
   };
 
   const decodeImage = (src) => new Promise((resolve, reject) => {
@@ -599,17 +723,21 @@ footer p { margin:0; white-space:nowrap; }
 
   setup();
   setupGear();
+  setupMaterialMotion();
   mobile.addEventListener?.('change', setup);
   reducedMotion.addEventListener?.('change', setupGear);
+  reducedMotion.addEventListener?.('change', setupMaterialMotion);
   window.addEventListener('scroll', onScroll, { passive: true });
   window.addEventListener('resize', setup, { passive: true });
   window.addEventListener('pagehide', () => {
     observer?.disconnect();
     gearObserver?.disconnect();
+    materialObserver?.disconnect();
     cancelDesktop();
     window.removeEventListener('scroll', onScroll);
     window.removeEventListener('resize', setup);
     reducedMotion.removeEventListener?.('change', setupGear);
+    reducedMotion.removeEventListener?.('change', setupMaterialMotion);
     userPhotoUrls.forEach((url) => URL.revokeObjectURL(url));
   }, { once: true });
 })();
