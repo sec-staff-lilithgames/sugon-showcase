@@ -337,7 +337,7 @@ nav a:hover,.header-link:hover { opacity:1; }
 footer { --transition-from:white; position:relative; display:grid; grid-template-columns:minmax(0,1fr) auto; grid-template-areas:"brand brand" "tagline powered" "copyright copyright"; align-content:end; align-items:end; column-gap:clamp(36px,7vw,120px); row-gap:clamp(20px,3vw,42px); min-height:min(78svh,820px); padding:clamp(110px,12vw,190px) clamp(24px,5vw,80px) 42px; overflow:hidden; isolation:isolate; background:radial-gradient(circle at 82% 26%,rgba(219,45,53,.18),transparent 34%),linear-gradient(145deg,#080b12 0%,#11131b 58%,#090b11 100%); color:white; }
 footer::after { content:""; position:absolute; z-index:-1; left:5vw; right:5vw; bottom:24%; height:1px; background:linear-gradient(90deg,transparent,rgba(219,45,53,.72) 22%,rgba(255,241,214,.28) 68%,transparent); box-shadow:0 0 34px rgba(219,45,53,.34); }
 .statement::before,.innovation::before,.stack::before,.supernode::before,.io500::before,.zhengzhou::before,.moment::before,.future::before,footer::before,.camp-story::after { content:""; position:absolute; z-index:5; inset:0 0 auto; height:clamp(56px,6vw,96px); pointer-events:none; background:linear-gradient(to bottom,var(--transition-from),transparent); }
-.footer-brand { grid-area:brand; position:relative; justify-self:start; font:900 clamp(104px,18vw,280px)/.7 Arial Black,Arial,sans-serif; letter-spacing:-.105em; color:transparent; background:linear-gradient(112deg,#ff3b43 8%,#c51f2a 48%,#71131d 96%); -webkit-background-clip:text; background-clip:text; -webkit-text-stroke:1px rgba(255,95,102,.28); filter:drop-shadow(0 18px 44px rgba(219,45,53,.22)); }
+.footer-brand { grid-area:brand; position:relative; justify-self:start; font:900 clamp(104px,18vw,280px)/.7 Arial Black,Arial,sans-serif; letter-spacing:-.04em; color:transparent; background:linear-gradient(112deg,#ff3b43 8%,#c51f2a 48%,#71131d 96%); -webkit-background-clip:text; background-clip:text; -webkit-text-stroke:1px rgba(255,95,102,.28); filter:drop-shadow(0 18px 44px rgba(219,45,53,.22)); }
 .footer-brand::after { content:"ADVANCED COMPUTING · CHINA"; position:absolute; left:.07em; bottom:-2.7em; color:rgba(255,255,255,.32); font:700 8px/1 Arial,sans-serif; letter-spacing:.34em; -webkit-text-stroke:0; white-space:nowrap; }
 footer p { margin:0; white-space:nowrap; }
 .footer-tagline { grid-area:tagline; display:flex; align-items:baseline; gap:clamp(16px,2vw,32px); font-family:"STSong","Songti SC",serif; }
@@ -428,7 +428,7 @@ footer p { margin:0; white-space:nowrap; }
   .future-image img { -webkit-mask-image:radial-gradient(ellipse 92% 90% at 50% 48%,#000 50%,rgba(0,0,0,.86) 72%,transparent 100%); mask-image:radial-gradient(ellipse 92% 90% at 50% 48%,#000 50%,rgba(0,0,0,.86) 72%,transparent 100%); }
   .future-copy { padding:90px 24px; }
   footer { grid-template-columns:1fr; grid-template-areas:"brand" "tagline" "powered" "copyright"; row-gap:24px; min-height:66svh; padding:120px 24px 34px; overflow:hidden; }
-  .footer-brand { font-size:clamp(88px,28vw,150px); line-height:.76; }
+  .footer-brand { font-size:clamp(84px,26vw,142px); line-height:.76; letter-spacing:-.035em; }
   .footer-brand::after { bottom:-2.4em; font-size:7px; letter-spacing:.24em; }
   .footer-tagline { flex-direction:column; align-items:flex-start; gap:10px; }
   .footer-tagline span { font-size:clamp(40px,13vw,62px); }
