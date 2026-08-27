@@ -53,15 +53,17 @@ nav a:hover,.header-link:hover { opacity:1; }
 .statement-copy .lead { font-family:"STSong","Songti SC",serif; font-size:clamp(38px,5.1vw,78px); line-height:1.22; letter-spacing:-.04em; }
 .statement-copy>p:last-child { max-width:620px; margin:46px 0 0 auto; color:#66645f; font-size:16px; line-height:2; }
 
-.campus-feature { display:grid; grid-template-columns:minmax(0,2.2fr) minmax(260px,.8fr); gap:5vw; align-items:end; padding:0 clamp(24px,5vw,80px) clamp(110px,12vw,190px) 0; }
+.campus-feature { position:relative; display:flex; min-height:100svh; align-items:flex-end; padding:clamp(100px,12vw,180px) clamp(24px,7vw,116px); overflow:hidden; isolation:isolate; background:#071a3f; color:white; }
+.campus-feature::after { content:""; position:absolute; z-index:1; inset:0; pointer-events:none; background:linear-gradient(90deg,rgba(4,16,38,.18),rgba(4,16,38,.08) 48%,rgba(4,16,38,.78) 100%),linear-gradient(0deg,rgba(4,16,38,.74),transparent 58%); }
 .image-frame { overflow:hidden; background:transparent; }
-.image-frame--wide { height:min(78vw,920px); max-height:80svh; }
+.image-frame--wide { position:absolute; z-index:0; inset:0; height:100%; max-height:none; }
 .image-frame img,.stage-image img { transition:transform 1.2s cubic-bezier(.2,.7,.2,1); }
 .image-frame:hover img,.stage-image:hover img { transform:scale(1.025); }
-.image-frame--wide img,.stage-image img { -webkit-mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%); -webkit-mask-composite:source-in; mask-image:linear-gradient(to right,transparent 0,#000 9%,#000 91%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 10%,#000 90%,transparent 100%); mask-composite:intersect; }
-.feature-note { border-top:1px solid var(--line); padding-top:22px; }
+.image-frame--wide img,.stage-image img { object-fit:cover; -webkit-mask-image:none; mask-image:none; }
+.image-frame--wide img { object-position:center 44%; }
+.feature-note { position:relative; z-index:2; width:min(480px,42vw); margin-left:auto; border-top:1px solid rgba(255,255,255,.42); padding-top:22px; text-shadow:0 3px 22px rgba(0,8,24,.84); }
 .feature-note h2 { margin:52px 0 20px; font-family:"STSong","Songti SC",serif; font-size:clamp(30px,3vw,48px); font-weight:400; line-height:1.35; }
-.feature-note>p:last-child { color:#6f6d68; line-height:1.9; }
+.feature-note>p:last-child { color:rgba(255,255,255,.82); line-height:1.9; }
 
 .innovation { --transition-from:var(--paper); position:relative; min-height:820px; display:grid; grid-template-columns:1fr 1fr; background:#0b1735; color:white; }
 .innovation-art { position:relative; min-height:680px; background:#0b1735; overflow:hidden; }
@@ -151,15 +153,16 @@ nav a:hover,.header-link:hover { opacity:1; }
 .stable-motion-js .future.is-stable-visible .future-copy { opacity:1; }
 .stable-motion-js .future.is-stable-visible .future-image { opacity:1; transform:scale(1); }
 
-.moment { --transition-from:#091322; position:relative; padding:clamp(100px,13vw,200px) clamp(24px,5vw,80px); background:#ece8e0; }
-.moment-heading { display:grid; grid-template-columns:.6fr 1.5fr .8fr; gap:4vw; align-items:end; margin-bottom:70px; }
+.moment { --transition-from:#091322; position:relative; display:flex; min-height:100svh; align-items:flex-end; padding:clamp(110px,12vw,190px) clamp(24px,5vw,80px); overflow:hidden; isolation:isolate; background:#091322; color:white; }
+.moment::after { content:""; position:absolute; z-index:1; inset:0; pointer-events:none; background:linear-gradient(90deg,rgba(4,14,31,.78),rgba(4,14,31,.18) 58%,rgba(4,14,31,.32)),linear-gradient(0deg,rgba(4,14,31,.76),transparent 62%); }
+.moment-heading { position:relative; z-index:2; display:grid; width:100%; grid-template-columns:.6fr 1.5fr .8fr; gap:4vw; align-items:end; margin:0; }
 .moment-heading .eyebrow { margin:0; }
 .moment-title { display:flex; flex-direction:column; align-items:flex-start; }
 .moment-heading h2 { margin:0; font-family:"STSong","Songti SC",serif; font-size:clamp(42px,4.8vw,72px); font-weight:400; line-height:1; letter-spacing:-.05em; white-space:nowrap; }
 .join-link { display:inline-flex; align-items:center; gap:18px; margin-top:22px; padding-bottom:9px; border-bottom:1px solid currentColor; font-size:12px; font-weight:700; letter-spacing:.14em; }
 .join-link span { color:var(--red); }
-.moment-heading>p:last-child { margin:0; color:#73706a; line-height:1.8; }
-.stage-image { position:relative; width:calc(100% + 10vw); height:min(55vw,760px); margin:0 0 0 -5vw; overflow:visible; }
+.moment-heading>p:last-child { margin:0; color:rgba(255,255,255,.78); line-height:1.8; }
+.stage-image { position:absolute; z-index:0; inset:0; width:100%; height:100%; margin:0; overflow:hidden; }
 .stage-image figcaption { position:absolute; right:24px; bottom:20px; padding:0; background:transparent; color:white; text-shadow:0 2px 12px rgba(0,0,0,.8); font-size:11px; letter-spacing:.15em; }
 
 .camp-story { --transition-from:#ece8e0; position:relative; padding:clamp(100px,12vw,190px) clamp(24px,5vw,80px) 0; background:radial-gradient(ellipse 82% 74% at 50% 72%,rgba(112,28,39,.38),transparent 72%),radial-gradient(circle at 16% 56%,rgba(104,29,38,.34),transparent 38%),radial-gradient(circle at 82% 18%,#33181b 0,transparent 32%),#151218; color:white; overflow:hidden; }
@@ -172,12 +175,12 @@ nav a:hover,.header-link:hover { opacity:1; }
 .camp-live-link { display:inline-flex; margin-left:12px; padding-bottom:1px; border-bottom:1px solid rgba(255,255,255,.58); color:#fff1d6; font-weight:800; letter-spacing:.08em; transition:color .2s ease,border-color .2s ease; }
 .camp-live-link:hover { color:white; border-color:var(--red); }
 .camp-meta span { font-size:10px; letter-spacing:.16em; }
-.heart-scroll { position:relative; height:108svh; }
+.heart-scroll { position:relative; width:100vw; height:100svh; margin-left:calc(50% - 50vw); }
 .heart-scroll::after { content:""; position:absolute; z-index:6; left:50%; bottom:-1px; width:100vw; height:clamp(100px,13vw,180px); pointer-events:none; background:linear-gradient(to bottom,transparent,rgba(244,241,234,.64) 62%,#fff 100%); transform:translateX(-50%); }
-.heart-sticky { position:relative; height:100%; display:grid; place-items:center; overflow:hidden; isolation:isolate; -webkit-mask-image:linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 8%,#000 92%,transparent 100%); -webkit-mask-composite:source-in; mask-image:linear-gradient(to right,transparent 0,#000 8%,#000 92%,transparent 100%),linear-gradient(to bottom,transparent 0,#000 8%,#000 92%,transparent 100%); mask-composite:intersect; }
+.heart-sticky { position:relative; height:100%; display:grid; place-items:center; overflow:hidden; isolation:isolate; -webkit-mask-image:none; mask-image:none; }
 .heart-sticky::before { content:""; position:absolute; z-index:-2; inset:-8%; background:url('images/event-camp-06.webp') center 48%/cover no-repeat; filter:blur(22px) saturate(.82) brightness(.52); opacity:.36; transform:scale(1.08); -webkit-mask-image:radial-gradient(ellipse 78% 72% at center,#000 5%,rgba(0,0,0,.82) 48%,transparent 86%); mask-image:radial-gradient(ellipse 78% 72% at center,#000 5%,rgba(0,0,0,.82) 48%,transparent 86%); }
 .heart-sticky::after { content:""; position:absolute; z-index:-1; inset:0; pointer-events:none; background:radial-gradient(ellipse 58% 62% at center,rgba(17,19,24,.04),rgba(17,19,24,.54) 68%,transparent 100%); }
-.heart-wall { position:relative; z-index:1; width:min(1180px,96vw); height:min(820px,96svh); }
+.heart-wall { position:relative; z-index:1; width:min(1320px,100vw); height:min(900px,98svh); }
 .heart-core { position:absolute; z-index:0; left:50%; top:48%; width:clamp(190px,25vw,360px); aspect-ratio:1; background:rgba(218,39,48,.16); transform:translate(-50%,-50%) rotate(45deg); box-shadow:0 0 120px rgba(218,39,48,.18); }
 .heart-core::before,.heart-core::after { content:""; position:absolute; width:100%; height:100%; border-radius:50%; background:inherit; }
 .heart-core::before { left:-50%; }
@@ -192,19 +195,18 @@ nav a:hover,.header-link:hover { opacity:1; }
 .heart-photo:nth-of-type(4) { --tx:218px; --ty:-340px; --tr:8deg; --sx:58vw; --sy:-48vh; --sr:24deg; }
 .heart-photo:nth-of-type(5) { --tx:-560px; --ty:-150px; --tr:7deg; --sx:-72vw; --sy:-8vh; --sr:-18deg; }
 .heart-photo:nth-of-type(6) { --tx:-338px; --ty:-164px; --tr:-6deg; --sx:-50vw; --sy:-4vh; --sr:-16deg; }
-.heart-photo:nth-of-type(7) { --tx:-92px; --ty:-148px; --tr:5deg; --sx:-12vw; --sy:-12vh; --sr:14deg; }
+.heart-photo:nth-of-type(7) { --tx:-100px; --ty:-250px; --tr:5deg; --sx:-12vw; --sy:-12vh; --sr:14deg; }
 .heart-photo:nth-of-type(8) { --tx:160px; --ty:-166px; --tr:-7deg; --sx:46vw; --sy:-8vh; --sr:18deg; }
 .heart-photo:nth-of-type(9) { --tx:394px; --ty:-136px; --tr:9deg; --sx:72vw; --sy:-2vh; --sr:22deg; }
 .heart-photo:nth-of-type(10) { --tx:-498px; --ty:44px; --tr:-8deg; --sx:-70vw; --sy:30vh; --sr:-20deg; }
 .heart-photo:nth-of-type(11) { --tx:-258px; --ty:18px; --tr:6deg; --sx:-42vw; --sy:38vh; --sr:18deg; }
-.heart-photo:nth-of-type(12) { --tx:-12px; --ty:48px; --tr:-4deg; --sx:4vw; --sy:42vh; --sr:-14deg; }
+.heart-photo:nth-of-type(12) { --tx:390px; --ty:52px; --tr:-4deg; --sx:4vw; --sy:42vh; --sr:-14deg; }
 .heart-photo:nth-of-type(13) { --tx:244px; --ty:14px; --tr:7deg; --sx:52vw; --sy:35vh; --sr:18deg; }
 .heart-photo:nth-of-type(14) { --tx:-410px; --ty:228px; --tr:8deg; --sx:-58vw; --sy:62vh; --sr:22deg; }
 .heart-photo:nth-of-type(15) { --tx:-164px; --ty:214px; --tr:-6deg; --sx:-20vw; --sy:64vh; --sr:-16deg; }
 .heart-photo:nth-of-type(16) { --tx:84px; --ty:236px; --tr:5deg; --sx:20vw; --sy:66vh; --sr:16deg; }
 .heart-photo:nth-of-type(17) { --tx:326px; --ty:206px; --tr:-8deg; --sx:62vw; --sy:58vh; --sr:-20deg; }
 .heart-message { position:absolute; z-index:5; left:50%; top:50%; display:flex; flex-direction:column; align-items:center; isolation:isolate; transform:translate(-50%,-42%); text-align:center; text-shadow:0 3px 18px rgba(0,0,0,.7); pointer-events:none; }
-.heart-message::before { content:""; position:absolute; z-index:-1; inset:-74px -110px; border-radius:50%; pointer-events:none; background:radial-gradient(ellipse at center,rgba(15,17,22,.98) 0%,rgba(15,17,22,.92) 46%,rgba(15,17,22,.68) 66%,transparent 100%); }
 .heart-message span { color:var(--red); font:900 clamp(44px,6vw,82px)/.8 Arial Black,sans-serif; letter-spacing:-.08em; }
 .heart-message strong { margin-top:16px; color:#fff; font-family:"STSong","Songti SC",serif; font-size:clamp(24px,3vw,42px); font-weight:800; line-height:1.08; letter-spacing:.035em; text-shadow:0 3px 16px rgba(0,0,0,.82); }
 .heart-message small { margin-top:9px; color:rgba(255,255,255,.88); font-size:10px; font-weight:700; letter-spacing:.22em; text-shadow:0 2px 12px rgba(0,0,0,.78); }
@@ -325,9 +327,8 @@ nav a:hover,.header-link:hover { opacity:1; }
 }
 @supports (animation-timeline:view()) {
   .innovation-copy { animation:innovation-sweep linear both; animation-timeline:view(); animation-range:entry 0% exit 100%; }
-  .moment-heading { animation:moment-iris linear both; animation-timeline:view(); animation-range:entry 0% exit 100%; }
   .camp-heading { animation:camp-converge linear both; animation-timeline:view(); animation-range:entry 0% exit 100%; }
-  .image-frame,.innovation-art,.stage-image {
+  .innovation-art {
     animation:section-reveal linear both;
     animation-timeline:view();
     animation-range:entry 4% cover 30%;
@@ -366,8 +367,9 @@ footer p { margin:0; white-space:nowrap; }
   .statement { grid-template-columns:1fr; gap:58px; }
   .statement-copy>p:last-child { margin-left:0; }
   .campus-feature,.innovation,.stack,.supernode,.io500,.future { grid-template-columns:1fr; }
-  .image-frame--wide { height:78svh; }
-  .feature-note { margin-inline:24px; }
+  .campus-feature { min-height:100svh; padding:100px 24px 72px; }
+  .campus-feature .image-frame--wide { height:100%; }
+  .campus-feature .feature-note { width:100%; margin:0; }
   .innovation-art { min-height:auto; aspect-ratio:1; }
   .innovation-copy { padding:80px 24px; }
   .metrics { gap:8px; }
@@ -391,13 +393,14 @@ footer p { margin:0; white-space:nowrap; }
   .zhengzhou-image img { object-position:58% center; }
   .zhengzhou-copy { min-height:900px; padding:100px 24px 82px; }
   .zhengzhou-copy h2 { font-size:clamp(48px,13vw,72px); }
+  .moment { min-height:100svh; padding:110px 24px 72px; }
   .moment-heading { grid-template-columns:1fr; }
-  .stage-image { width:calc(100% + 48px); height:62vw; min-height:300px; margin-left:-24px; }
+  .moment .stage-image { inset:0; width:100%; height:100%; min-height:0; margin:0; }
   .camp-heading { grid-template-columns:1fr; gap:36px; }
   .moment-heading h2,.camp-heading h2 { font-size:clamp(30px,8.6vw,42px); white-space:nowrap; }
   .camp-story::before { top:19%; font-size:72vw; }
-  .heart-scroll { height:94svh; }
-  .heart-wall { width:100%; height:min(720px,90svh); }
+  .heart-scroll { width:100vw; height:100svh; }
+  .heart-wall { width:100vw; height:min(760px,96svh); }
   .heart-photo,.heart-core,.heart-message { animation:none!important; }
   .heart-photo { width:min(34vw,132px); }
   .heart-photo--portrait { width:min(23vw,90px); }
@@ -407,17 +410,17 @@ footer p { margin:0; white-space:nowrap; }
   .heart-photo:nth-of-type(4) { --tx:-170px; --ty:-214px; --tr:7deg; --msx:-68vw; --msy:-20vh; --msr:-16deg; --step:3; }
   .heart-photo:nth-of-type(5) { --tx:-52px; --ty:-228px; --tr:-6deg; --msx:-16vw; --msy:-24vh; --msr:-12deg; --step:4; }
   .heart-photo:nth-of-type(6) { --tx:66px; --ty:-206px; --tr:5deg; --msx:54vw; --msy:-20vh; --msr:16deg; --step:5; }
-  .heart-photo:nth-of-type(7) { --tx:-194px; --ty:-104px; --tr:-7deg; --msx:-72vw; --msy:-4vh; --msr:-18deg; --step:6; }
-  .heart-photo:nth-of-type(8) { --tx:-76px; --ty:-118px; --tr:6deg; --msx:-20vw; --msy:-8vh; --msr:16deg; --step:7; }
-  .heart-photo:nth-of-type(9) { --tx:42px; --ty:-94px; --tr:-5deg; --msx:50vw; --msy:-2vh; --msr:-14deg; --step:8; }
-  .heart-photo:nth-of-type(10) { --tx:-170px; --ty:8px; --tr:6deg; --msx:-68vw; --msy:18vh; --msr:18deg; --step:9; }
-  .heart-photo:nth-of-type(11) { --tx:-52px; --ty:-6px; --tr:-6deg; --msx:-14vw; --msy:16vh; --msr:-16deg; --step:10; }
-  .heart-photo:nth-of-type(12) { --tx:66px; --ty:18px; --tr:5deg; --msx:54vw; --msy:20vh; --msr:16deg; --step:11; }
-  .heart-photo:nth-of-type(13) { --tx:-174px; --ty:112px; --tr:-5deg; --msx:-66vw; --msy:34vh; --msr:-16deg; --step:12; }
-  .heart-photo:nth-of-type(14) { --tx:-76px; --ty:102px; --tr:7deg; --msx:-18vw; --msy:36vh; --msr:18deg; --step:13; }
-  .heart-photo:nth-of-type(15) { --tx:42px; --ty:120px; --tr:-6deg; --msx:52vw; --msy:38vh; --msr:-18deg; --step:14; }
-  .heart-photo:nth-of-type(16) { --tx:-132px; --ty:222px; --tr:5deg; --msx:-48vw; --msy:54vh; --msr:16deg; --step:15; }
-  .heart-photo:nth-of-type(17) { --tx:0px; --ty:216px; --tr:-5deg; --msx:34vw; --msy:52vh; --msr:-16deg; --step:16; }
+  .heart-photo:nth-of-type(7) { --tx:-205px; --ty:-190px; --tr:-7deg; --msx:-72vw; --msy:-4vh; --msr:-18deg; --step:6; }
+  .heart-photo:nth-of-type(8) { --tx:80px; --ty:-200px; --tr:6deg; --msx:-20vw; --msy:-8vh; --msr:16deg; --step:7; }
+  .heart-photo:nth-of-type(9) { --tx:80px; --ty:-95px; --tr:-5deg; --msx:50vw; --msy:-2vh; --msr:-14deg; --step:8; }
+  .heart-photo:nth-of-type(10) { --tx:-205px; --ty:-10px; --tr:6deg; --msx:-68vw; --msy:18vh; --msr:18deg; --step:9; }
+  .heart-photo:nth-of-type(11) { --tx:80px; --ty:0px; --tr:-6deg; --msx:-14vw; --msy:16vh; --msr:-16deg; --step:10; }
+  .heart-photo:nth-of-type(12) { --tx:-205px; --ty:88px; --tr:5deg; --msx:54vw; --msy:20vh; --msr:16deg; --step:11; }
+  .heart-photo:nth-of-type(13) { --tx:80px; --ty:96px; --tr:-5deg; --msx:-66vw; --msy:34vh; --msr:-16deg; --step:12; }
+  .heart-photo:nth-of-type(14) { --tx:-205px; --ty:190px; --tr:7deg; --msx:-18vw; --msy:36vh; --msr:18deg; --step:13; }
+  .heart-photo:nth-of-type(15) { --tx:80px; --ty:194px; --tr:-6deg; --msx:52vw; --msy:38vh; --msr:-18deg; --step:14; }
+  .heart-photo:nth-of-type(16) { --tx:-140px; --ty:284px; --tr:5deg; --msx:-48vw; --msy:54vh; --msr:16deg; --step:15; }
+  .heart-photo:nth-of-type(17) { --tx:10px; --ty:280px; --tr:-5deg; --msx:34vw; --msy:52vh; --msr:-16deg; --step:16; }
   .mobile-heart-js .heart-photo { opacity:.48; filter:saturate(.62) brightness(.72); transform:translate(var(--msx),var(--msy)) rotate(var(--msr)) scale(.76); transition:transform .9s cubic-bezier(.22,.78,.2,1),filter .9s ease,opacity .45s ease; transition-delay:calc(var(--step) * 45ms); }
   .mobile-heart-js .heart-core,.mobile-heart-js .heart-message { opacity:0; transition:opacity .45s ease,transform .9s cubic-bezier(.22,.78,.2,1); }
   .mobile-heart-js .heart-core { transform:translate(-50%,-50%) rotate(45deg) scale(.4); }
@@ -426,7 +429,6 @@ footer p { margin:0; white-space:nowrap; }
   .mobile-heart-js .heart-scroll.is-mobile-assembled .heart-core { opacity:1; transform:translate(-50%,-50%) rotate(45deg) scale(1); }
   .mobile-heart-js .heart-scroll.is-mobile-assembled .heart-message { opacity:1; transform:translate(-50%,-42%) scale(1); }
   .heart-message { top:51%; }
-  .heart-message::before { inset:-62px -76px; }
   .heart-user-tile { width:min(35vw,146px); }
   .heart-user-wall[data-density="medium"] .heart-user-tile { width:min(28vw,118px); }
   .heart-user-wall[data-density="dense"] .heart-user-tile { width:min(23vw,98px); }
@@ -456,7 +458,6 @@ footer p { margin:0; white-space:nowrap; }
 }
 
 </style></head><body><main><header class="site-header"><a class="brand" href="#top" aria-label="曙光首页"><span class="brand-mark">Sugon</span><span>中科曙光</span></a><nav aria-label="主导航"><a href="#about">关于曙光</a><a href="#innovation">技术全景</a><a href="#io500">前沿成果</a><a href="#moment">时代现场</a><a href="#camp">黄埔八期</a></nav><a class="header-link" href="https://www.sugon.com/" target="_blank" rel="noreferrer">了解更多 <span aria-hidden="true">↗</span></a></header><section class="hero" id="top"><div class="hero-copy"><p class="eyebrow"><span>01</span> 计算驱动未来</p><h1>让算力，抵达每一种未来</h1><p class="hero-intro">从核心技术到产业生态，以先进计算构筑数字中国的坚实底座</p><a class="primary-link" href="#about" data-scroll-target="about">开启探索 <span aria-hidden="true">↓</span></a></div><figure class="hero-visual"><img src="images/skyline-sunset.webp" alt="夕阳下的中科曙光大厦与城市天际线" width="1122" height="1402" loading="eager" fetchPriority="high" decoding="async"/><figcaption><span>40°03′N</span><span>北京 · 中国</span></figcaption></figure></section><section class="statement" id="about" data-stable-motion=""><div class="section-label"><span>02</span><p>关于曙光 <small>ABOUT SUGON</small></p></div><div class="statement-copy"><p class="lead">以科技之光，照见数字世界的更多可能</p><p>曙光持续深耕高端计算、存储、安全与数据中心等领域，让更强大的计算能力服务科研突破、产业升级与社会发展</p></div></section><section class="campus-feature"><div class="image-frame image-frame--wide"><img src="images/campus-day.webp" alt="蓝天白云下的中科曙光产业创新中心" width="1122" height="1402" loading="lazy" decoding="async"/></div><div class="feature-note"><h2>创新，不止发生在实验室</h2><p>开放协同，让技术穿越场景，汇聚成真实的产业动能</p></div></section><section class="innovation" id="innovation"><div class="innovation-art"><img class="circuit-base" src="images/circuit.webp" alt="抽象计算芯片与电路图形" width="1254" height="1254" loading="lazy" decoding="async"/></div><div class="innovation-copy"><p class="eyebrow eyebrow--light"><span>03</span> 创新动能</p><p class="kicker">从一束微光，到万千算力</p><p class="innovation-body">探索计算边界，将复杂系统凝练为稳定、开放、持续演进的数字基础设施</p><div class="metrics" aria-label="创新关键词"><div><strong>高端计算</strong><small>COMPUTING</small></div><div><strong>智能存储</strong><small>STORAGE</small></div><div><strong>数字基础设施</strong><small>INFRASTRUCTURE</small></div></div></div></section><section class="stack" id="stack" data-material-chapter=""><div class="stack-copy"><p class="eyebrow"><span>04</span> 全栈底座</p><h2>从一颗芯片，抵达一座算力中心</h2><p>计算、网络、存储与基础设施协同演进，让复杂算力被组织、连接并持续释放</p></div><div class="stack-canvas" aria-label="曙光全栈算力产品"><figure class="stack-item stack-item--compute"><div class="stack-visual"><img src="images/material-compute.webp?v=2" alt="国产高性能计算系统 scaleX" width="430" height="205" loading="lazy" decoding="async"/></div><figcaption class="stack-caption"><strong>计算</strong><span>scaleX 超节点计算系统</span></figcaption></figure><figure class="stack-item stack-item--network"><div class="stack-visual"><img src="images/material-network.webp?v=2" alt="国产 IB 原生无损 RDMA 高速网络 scaleFabric" width="370" height="155" loading="lazy" decoding="async"/></div><figcaption class="stack-caption"><strong>高速网络</strong><span>scaleFabric 原生无损 RDMA</span></figcaption></figure><figure class="stack-item stack-item--storage"><div class="stack-visual"><img src="images/material-storage.webp?v=2" alt="集中式与分布式存储系统" width="420" height="125" loading="lazy" decoding="async"/></div><figcaption class="stack-caption"><strong>存储</strong><span>FlashNexus · ParaStor</span></figcaption></figure><figure class="stack-item stack-item--cloudbase"><div class="stack-visual"><img src="images/material-cloudbase.webp?v=2" alt="曙光 CloudBASE 高密度液冷算力中心" width="440" height="147" loading="lazy" decoding="async"/></div><figcaption class="stack-caption"><strong>基础设施</strong><span>CloudBASE 液冷算力中心</span></figcaption></figure></div></section><section class="supernode" id="supernode" data-material-chapter=""><div class="supernode-copy"><p class="eyebrow"><span>05</span> 超节点</p><h2>模块聚合，系统跃迁</h2><p>从标准化计算单元到高密度系统，以模块化组合承载更大规模的先进计算</p></div><div class="supernode-stage"><figure class="supernode-rack"><img src="images/material-supernode.webp" alt="超节点模块组合示意" width="738" height="632" loading="lazy" decoding="async"/></figure><span class="supernode-line" aria-hidden="true"></span><figure class="supernode-nebula"><img src="images/material-nebula.webp" alt="曙光硅立方超级计算系统" width="768" height="432" loading="lazy" decoding="async"/></figure></div></section><section class="io500" id="io500" data-material-chapter=""><div class="io500-copy"><p class="eyebrow eyebrow--light"><span>06</span> 全球第一</p><h2>双料冠军，刷新世界纪录</h2><p>2026 年 6 月，ParaStor F9000 全闪存储系统在 IO500 生产型全节点和 10 节点榜单中实现双榜第一</p><div class="io500-metrics" aria-label="IO500 核心数据"><div><strong>26888.39</strong><span>GiB/s · 带宽</span></div><div><strong>232,754.76</strong><span>kIOP/s · 元数据性能</span></div><div><strong>171.67%</strong><span>世界纪录提升</span></div></div></div><figure class="io500-poster"><img src="images/material-io500.webp" alt="中科曙光 ParaStor IO500 全球双榜第一" width="1080" height="1439" loading="lazy" decoding="async"/></figure></section><section class="zhengzhou" id="zhengzhou" data-material-chapter=""><figure class="zhengzhou-image"><img src="images/material-zhengzhou.webp" alt="国家超算互联网郑州核心节点航拍" width="1920" height="1080" loading="lazy" decoding="async"/></figure><div class="zhengzhou-copy"><p class="eyebrow eyebrow--light"><span>07</span> 核心节点</p><h2>十万卡级算力，落地郑州</h2><p>国家超算互联网核心节点正式上线运行；作为全国首个十万卡级超智融合算力资源池，为大模型研发、科学智能体等前沿创新提供先进、高效、普惠的算力支撑</p><a class="zhengzhou-link" href="https://www.scnet.cn/" target="_blank" rel="noreferrer">超算互联</a></div></section><section class="moment" id="moment"><div class="moment-heading"><p class="eyebrow"><span>08</span> 时代现场</p><div class="moment-title"><h2>曙光，因你而不凡</h2><a class="join-link" href="https://sugon.zhiye.com" target="_blank" rel="noreferrer">加入我们 <span aria-hidden="true">↗</span></a></div><p>每一次相聚，都是面向未来的一次共同出发</p></div><figure class="stage-image"><img src="images/event-stage.webp" alt="中科曙光活动现场，舞台上展示曙光因你而不凡" width="1672" height="941" loading="lazy" decoding="async"/><figcaption>年度盛会 / 共同见证</figcaption></figure></section><section class="camp-story" id="camp"><div class="camp-heading"><p class="eyebrow"><span>09</span> 荣耀时刻</p><h2>荣聚曙光，梦想启航</h2><div class="camp-meta"><p>2026 中科曙光集团应届生训战营 <a class="camp-live-link" href="https://live.photoplus.cn/live/pc/17752641/#/live" target="_blank" rel="noreferrer">点我查看更多风采</a></p><span>黄埔八期 · 现场纪实</span></div></div><div class="heart-scroll"><div class="heart-sticky"><div class="heart-wall" aria-label="黄埔八期活动照片墙"><figure class="heart-photo"><img src="images/event-camp-06.webp" alt="荣聚曙光梦想启航应届生训战营主视觉" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-01.webp" alt="有所为有所不为主题展陈" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-03.webp" alt="人生能有几回搏主题展陈" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-05.webp" alt="应届生训战营国旗仪式现场" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-02.webp" alt="技术顶天应用立地主题展陈" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-04.webp" alt="荣聚曙光梦想启航户外旗帜" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-07.webp" alt="训战营现场红色主题装置" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-08.webp" alt="前行必有曙光现场导视" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/showcase-extra-01.webp" alt="应届生训战营会场学员合影" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/showcase-extra-02.webp" alt="应届生训战营户外队列合影" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/showcase-extra-03.webp" alt="应届生训战营团队交流现场" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/showcase-extra-04.webp" alt="应届生训战营旗帜活动现场" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo heart-photo--portrait"><img src="images/showcase-extra-05.webp" alt="应届生训战营学员展示活动成果" width="960" height="1280" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/showcase-extra-06.webp" alt="应届生训战营学员课堂风采" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/showcase-extra-07.webp" alt="应届生训战营现场互动瞬间" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/showcase-extra-08.webp" alt="应届生训战营户外行进队列" width="1280" height="720" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/showcase-extra-09.webp" alt="应届生训战营学员专注学习现场" width="1280" height="720" loading="lazy" decoding="async"/></figure><div class="heart-user-wall" data-user-photo data-density="small" aria-hidden="true"></div><div class="heart-message"><span>08</span><strong>同心同行</strong><small>共赴新程</small><label class="heart-upload"><span data-heart-upload-label>＋ 上传我的瞬间</span><input data-heart-upload type="file" accept="image/*" aria-label="上传一张照片加入照片墙"/></label></div><div class="heart-flight-layer" data-flight-photo aria-hidden="true"></div></div></div></div></section><section class="future" id="future" data-stable-motion=""><div class="future-image"><img src="images/supercomputing-center.webp" alt="国家超级计算互联网建筑与中国国旗" width="1448" height="1086" loading="lazy" decoding="async"/></div><div class="future-copy"><p class="eyebrow"><span>10</span> 共赴未来</p><h2>连接算力，连接无限可能</h2><p>立足中国，服务全球；与每一位同行者，共建开放、普惠、可持续的先进计算生态</p><a class="text-link" href="#top" data-scroll-target="top">回到顶部 <span aria-hidden="true">↑</span></a></div></section><footer><div class="footer-brand" aria-label="Sugon"><span aria-hidden="true">S</span><span aria-hidden="true">u</span><span class="footer-letter-g" aria-hidden="true">g</span><span aria-hidden="true">o</span><span aria-hidden="true">n</span></div><p class="footer-tagline"><span>曙光</span><em>因你而不凡</em></p><p class="powered-by">powered by <strong>scnet</strong></p><p class="copyright">© 2026 中科曙光</p></footer></main><script data-heart-wall="mobile-observer">
-
 (() => {
   const wall = document.querySelector('.heart-scroll');
   if (!wall) return;
@@ -608,18 +609,18 @@ footer p { margin:0; white-space:nowrap; }
   };
 
   const preferredHeartSlots = [
-    { left: 40, top: 34, rotate: -7 },
-    { left: 60, top: 34, rotate: 7 },
-    { left: 50, top: 51, rotate: -2 },
-    { left: 34, top: 52, rotate: -9 },
-    { left: 66, top: 52, rotate: 9 },
-    { left: 42, top: 68, rotate: -6 },
-    { left: 58, top: 68, rotate: 6 },
-    { left: 50, top: 82, rotate: 0 },
-    { left: 26, top: 38, rotate: -11 },
-    { left: 74, top: 38, rotate: 11 },
-    { left: 28, top: 61, rotate: -8 },
-    { left: 72, top: 61, rotate: 8 },
+    { left: 18, top: 30, rotate: -7 },
+    { left: 82, top: 30, rotate: 7 },
+    { left: 15, top: 48, rotate: -9 },
+    { left: 85, top: 48, rotate: 9 },
+    { left: 18, top: 68, rotate: -6 },
+    { left: 82, top: 68, rotate: 6 },
+    { left: 30, top: 82, rotate: -4 },
+    { left: 70, top: 82, rotate: 4 },
+    { left: 30, top: 18, rotate: -11 },
+    { left: 70, top: 18, rotate: 11 },
+    { left: 12, top: 58, rotate: -8 },
+    { left: 88, top: 58, rotate: 8 },
   ];
 
   const heartPoint = (index) => {
@@ -629,7 +630,8 @@ footer p { margin:0; white-space:nowrap; }
       const x = halton(sample, 2) * 2.5 - 1.25;
       const y = halton(sample, 3) * 2.4 - 1.1;
       const inside = Math.pow(x * x + y * y - 1, 3) - x * x * Math.pow(y, 3) <= 0;
-      if (inside) {
+      const outsideMessage = Math.abs(x) > .38 || Math.abs(y) > .34;
+      if (inside && outsideMessage) {
         return {
           left: 50 + x * 28,
           top: 50 - y * 31,
@@ -815,5 +817,4 @@ footer p { margin:0; white-space:nowrap; }
     userPhotoUrls.forEach((url) => URL.revokeObjectURL(url));
   }, { once: true });
 })();
-
 </script></body></html>
