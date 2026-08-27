@@ -411,7 +411,7 @@ footer p { margin:0; white-space:nowrap; }
   .heart-photo:nth-of-type(5) { --tx:-52px; --ty:-228px; --tr:-6deg; --msx:-16vw; --msy:-24vh; --msr:-12deg; --step:4; }
   .heart-photo:nth-of-type(6) { --tx:66px; --ty:-206px; --tr:5deg; --msx:54vw; --msy:-20vh; --msr:16deg; --step:5; }
   .heart-photo:nth-of-type(7) { --tx:-205px; --ty:-190px; --tr:-7deg; --msx:-72vw; --msy:-4vh; --msr:-18deg; --step:6; }
-  .heart-photo:nth-of-type(8) { --tx:80px; --ty:-200px; --tr:6deg; --msx:-20vw; --msy:-8vh; --msr:16deg; --step:7; }
+  .heart-photo:nth-of-type(8) { --tx:80px; --ty:-200px; --tr:6deg; --msx:55vw; --msy:-8vh; --msr:16deg; --step:7; }
   .heart-photo:nth-of-type(9) { --tx:80px; --ty:-95px; --tr:-5deg; --msx:50vw; --msy:-2vh; --msr:-14deg; --step:8; }
   .heart-photo:nth-of-type(10) { --tx:-205px; --ty:-10px; --tr:6deg; --msx:-68vw; --msy:18vh; --msr:18deg; --step:9; }
   .heart-photo:nth-of-type(11) { --tx:80px; --ty:0px; --tr:-6deg; --msx:-14vw; --msy:16vh; --msr:-16deg; --step:10; }
@@ -421,7 +421,7 @@ footer p { margin:0; white-space:nowrap; }
   .heart-photo:nth-of-type(15) { --tx:80px; --ty:194px; --tr:-6deg; --msx:52vw; --msy:38vh; --msr:-18deg; --step:14; }
   .heart-photo:nth-of-type(16) { --tx:-140px; --ty:284px; --tr:5deg; --msx:-48vw; --msy:54vh; --msr:16deg; --step:15; }
   .heart-photo:nth-of-type(17) { --tx:10px; --ty:280px; --tr:-5deg; --msx:34vw; --msy:52vh; --msr:-16deg; --step:16; }
-  .mobile-heart-js .heart-photo { opacity:.48; filter:saturate(.62) brightness(.72); transform:translate(var(--msx),var(--msy)) rotate(var(--msr)) scale(.76); transition:transform .9s cubic-bezier(.22,.78,.2,1),filter .9s ease,opacity .45s ease; transition-delay:calc(var(--step) * 45ms); }
+  .mobile-heart-js .heart-photo { opacity:.34; filter:saturate(.62) brightness(.72); transform:translate(var(--tx),var(--ty)) rotate(var(--tr)) scale(1); transition:filter .72s ease,opacity .45s ease; transition-delay:calc(var(--step) * 45ms); }
   .mobile-heart-js .heart-core,.mobile-heart-js .heart-message { opacity:0; transition:opacity .45s ease,transform .9s cubic-bezier(.22,.78,.2,1); }
   .mobile-heart-js .heart-core { transform:translate(-50%,-50%) rotate(45deg) scale(.4); }
   .mobile-heart-js .heart-message { transform:translate(-50%,-22%) scale(.86); }
@@ -501,11 +501,10 @@ footer p { margin:0; white-space:nowrap; }
     root.classList.add('desktop-heart-js');
     desktopAnimations = photos.map((photo) => {
       const style = window.getComputedStyle(photo);
-      const from = 'translate(' + style.getPropertyValue('--sx').trim() + ',' + style.getPropertyValue('--sy').trim() + ') rotate(' + style.getPropertyValue('--sr').trim() + ') scale(.76)';
       const to = 'translate(' + style.getPropertyValue('--tx').trim() + ',' + style.getPropertyValue('--ty').trim() + ') rotate(' + style.getPropertyValue('--tr').trim() + ') scale(1)';
       const animation = photo.animate([
-        { transform: from, filter: 'saturate(.6) brightness(.7)' },
-        { transform: to, filter: 'saturate(1) brightness(1)' },
+        { opacity: .34, transform: to, filter: 'saturate(.6) brightness(.7)' },
+        { opacity: 1, transform: to, filter: 'saturate(1) brightness(1)' },
       ], { duration: 1000, fill: 'both', easing: 'linear' });
       animation.pause();
       return animation;
