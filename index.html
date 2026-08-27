@@ -1,5 +1,6 @@
 <!DOCTYPE html><html lang="zh-CN"><head><meta charSet="utf-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><title>中科曙光｜计算驱动未来</title><meta name="description" content="让算力，抵达每一种未来。"/><meta property="og:title" content="中科曙光｜计算驱动未来"/><meta property="og:description" content="以先进计算构筑数字中国的坚实底座。"/><meta property="og:image" content="images/skyline-sunset.webp"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="中科曙光｜计算驱动未来"/><meta name="twitter:description" content="以先进计算构筑数字中国的坚实底座。"/><meta name="twitter:image" content="images/skyline-sunset.webp"/>
 <link rel="icon" href="favicon.ico"><style>
+@import 'tailwindcss';
 
 :root { --ink:#111214; --paper:#f4f1ea; --red:#db2d35; --line:rgba(17,18,20,.16); }
 * { box-sizing:border-box; }
@@ -76,7 +77,10 @@ nav a:hover,.header-link:hover { opacity:1; }
 .moment { --transition-from:#0b1735; position:relative; padding:clamp(100px,13vw,200px) clamp(24px,5vw,80px); background:#ece8e0; }
 .moment-heading { display:grid; grid-template-columns:.6fr 1.5fr .8fr; gap:4vw; align-items:end; margin-bottom:70px; }
 .moment-heading .eyebrow { margin:0; }
+.moment-title { display:flex; flex-direction:column; align-items:flex-start; }
 .moment-heading h2 { margin:0; font-family:"STSong","Songti SC",serif; font-size:clamp(48px,6.2vw,96px); font-weight:400; line-height:1; letter-spacing:-.05em; }
+.join-link { display:inline-flex; align-items:center; gap:18px; margin-top:22px; padding-bottom:9px; border-bottom:1px solid currentColor; font-size:12px; font-weight:700; letter-spacing:.14em; }
+.join-link span { color:var(--red); }
 .moment-heading>p:last-child { margin:0; color:#73706a; line-height:1.8; }
 .stage-image { position:relative; width:calc(100% + 10vw); height:min(55vw,760px); margin:0 0 0 -5vw; overflow:visible; }
 .stage-image figcaption { position:absolute; right:24px; bottom:20px; padding:0; background:transparent; color:white; text-shadow:0 2px 12px rgba(0,0,0,.8); font-size:11px; letter-spacing:.15em; }
@@ -113,15 +117,18 @@ nav a:hover,.header-link:hover { opacity:1; }
 .heart-message span { color:var(--red); font:900 clamp(44px,6vw,82px)/.8 Arial Black,sans-serif; letter-spacing:-.08em; }
 .heart-message strong { margin-top:16px; color:#fff; font-family:"STSong","Songti SC",serif; font-size:clamp(24px,3vw,42px); font-weight:800; line-height:1.08; letter-spacing:.035em; text-shadow:0 3px 16px rgba(0,0,0,.82); }
 .heart-message small { margin-top:9px; color:rgba(255,255,255,.88); font-size:10px; font-weight:700; letter-spacing:.22em; text-shadow:0 2px 12px rgba(0,0,0,.78); }
-.heart-user-photo { position:absolute; z-index:3; left:50%; top:50%; width:clamp(260px,34vw,470px); aspect-ratio:1.28; overflow:hidden; opacity:0; transform:translate(-50%,-50%) scale(.78); transition:opacity .36s ease,transform .8s cubic-bezier(.2,.72,.16,1); -webkit-mask-image:radial-gradient(ellipse 72% 70% at center,#000 34%,rgba(0,0,0,.92) 54%,rgba(0,0,0,.32) 76%,transparent 100%); mask-image:radial-gradient(ellipse 72% 70% at center,#000 34%,rgba(0,0,0,.92) 54%,rgba(0,0,0,.32) 76%,transparent 100%); pointer-events:none; }
-.heart-user-photo::after { content:""; position:absolute; inset:0; background:radial-gradient(ellipse at center,rgba(8,10,14,.08) 12%,rgba(8,10,14,.24) 58%,rgba(8,10,14,.62) 100%); }
-.heart-user-photo img { width:100%; height:100%; object-fit:cover; filter:saturate(1.04) contrast(1.05); }
-.heart-user-photo.is-filled { opacity:.86; transform:translate(-50%,-50%) scale(1); }
+.heart-user-wall { position:absolute; z-index:3; inset:0; pointer-events:none; }
+.heart-user-tile { position:absolute; width:clamp(140px,16vw,220px); aspect-ratio:1.42; margin:0; overflow:hidden; opacity:0; transform:translate(-50%,-50%) rotate(var(--ur)) scale(.56); transition:opacity .32s ease,transform .72s cubic-bezier(.2,.72,.16,1); -webkit-mask-image:radial-gradient(ellipse 76% 76% at center,#000 46%,rgba(0,0,0,.86) 67%,transparent 100%); mask-image:radial-gradient(ellipse 76% 76% at center,#000 46%,rgba(0,0,0,.86) 67%,transparent 100%); }
+.heart-user-tile img { width:100%; height:100%; object-fit:cover; filter:saturate(1.04) contrast(1.05); }
+.heart-user-tile.is-settled { opacity:.94; transform:translate(-50%,-50%) rotate(var(--ur)) scale(1); }
+.heart-user-wall[data-density="medium"] .heart-user-tile { width:clamp(108px,12vw,172px); }
+.heart-user-wall[data-density="dense"] .heart-user-tile { width:clamp(86px,9vw,138px); }
 .heart-upload { position:relative; margin-top:22px; padding:9px 2px 8px; color:#fff; font-size:11px; font-weight:700; letter-spacing:.14em; text-shadow:0 2px 14px rgba(0,0,0,.84); border-bottom:1px solid rgba(255,255,255,.58); cursor:pointer; pointer-events:auto; transition:color .25s ease,border-color .25s ease,transform .25s ease; }
 .heart-upload:hover,.heart-upload:focus-within { color:white; border-color:var(--red); transform:translateY(-2px); }
 .heart-upload span { color:inherit; font:inherit; letter-spacing:inherit; }
 .heart-upload input { position:absolute; width:1px; height:1px; overflow:hidden; opacity:0; pointer-events:none; }
-.heart-photo-flight { position:fixed; z-index:9999; overflow:hidden; opacity:0; pointer-events:none; transform-origin:center; -webkit-mask-image:radial-gradient(ellipse 72% 70% at center,#000 38%,rgba(0,0,0,.86) 64%,transparent 100%); mask-image:radial-gradient(ellipse 72% 70% at center,#000 38%,rgba(0,0,0,.86) 64%,transparent 100%); }
+.heart-flight-layer { position:fixed; z-index:9999; inset:0; pointer-events:none; }
+.heart-photo-flight { position:fixed; overflow:hidden; opacity:0; pointer-events:none; transform-origin:center; -webkit-mask-image:radial-gradient(ellipse 72% 70% at center,#000 38%,rgba(0,0,0,.86) 64%,transparent 100%); mask-image:radial-gradient(ellipse 72% 70% at center,#000 38%,rgba(0,0,0,.86) 64%,transparent 100%); }
 .heart-photo-flight.is-flying { opacity:1; }
 .heart-photo-flight img { width:100%; height:100%; object-fit:cover; }
 
@@ -237,8 +244,7 @@ footer p { margin:0; white-space:nowrap; }
   .camp-story::before { top:19%; font-size:72vw; }
   .heart-scroll { height:60svh; }
   .heart-wall { width:100%; height:min(520px,58svh); }
-  .heart-photo,.heart-core,.heart-message,.heart-user-photo,.heart-photo-flight { animation:none!important; }
-  .heart-user-photo { transition:none!important; }
+  .heart-photo,.heart-core,.heart-message { animation:none!important; }
   .heart-photo { width:min(42vw,154px); }
   .heart-photo:nth-of-type(1) { --tx:-140px; --ty:-185px; --tr:-13deg; --msx:-64vw; --msy:-26vh; --msr:-24deg; --step:0; }
   .heart-photo:nth-of-type(2) { --tx:-70px; --ty:-220px; --tr:-4deg; --msx:-14vw; --msy:-38vh; --msr:-10deg; --step:1; }
@@ -256,7 +262,9 @@ footer p { margin:0; white-space:nowrap; }
   .mobile-heart-js .heart-scroll.is-mobile-assembled .heart-core { opacity:1; transform:translate(-50%,-50%) rotate(45deg) scale(1); }
   .mobile-heart-js .heart-scroll.is-mobile-assembled .heart-message { opacity:1; transform:translate(-50%,-42%) scale(1); }
   .heart-message { top:51%; }
-  .heart-user-photo { width:min(72vw,330px); }
+  .heart-user-tile { width:min(35vw,146px); }
+  .heart-user-wall[data-density="medium"] .heart-user-tile { width:min(28vw,118px); }
+  .heart-user-wall[data-density="dense"] .heart-user-tile { width:min(23vw,98px); }
   .heart-upload { margin-top:18px; padding-bottom:7px; font-size:10px; letter-spacing:.08em; }
   .future-image { min-height:auto; height:72svh; }
   .future-image img { -webkit-mask-image:linear-gradient(to bottom,#000 0 76%,rgba(0,0,0,.88) 86%,transparent 100%); mask-image:linear-gradient(to bottom,#000 0 76%,rgba(0,0,0,.88) 86%,transparent 100%); }
@@ -269,13 +277,14 @@ footer p { margin:0; white-space:nowrap; }
   *,*::before,*::after { animation-duration:.01ms!important; animation-iteration-count:1!important; transition-duration:.01ms!important; }
   .hero-copy,.statement-copy,.feature-note,.innovation-copy,.moment-heading,.camp-heading,.future-copy,.footer-brand,footer p { animation:none!important; opacity:1!important; filter:none!important; transform:none!important; clip-path:none!important; }
   .circuit-base { animation:none!important; transform:scale(1.08)!important; }
-  .heart-photo,.heart-core,.heart-message,.heart-user-photo,.heart-photo-flight { animation:none!important; }
-  .heart-user-photo { transition:none!important; }
+  .heart-photo,.heart-core,.heart-message,.heart-user-tile,.heart-photo-flight { animation:none!important; }
+  .heart-user-tile { transition:none!important; }
   .mobile-heart-js .heart-photo { opacity:1!important; filter:none!important; transform:translate(var(--tx),var(--ty)) rotate(var(--tr)) scale(1)!important; transition:none!important; }
   .mobile-heart-js .heart-core { opacity:1!important; transform:translate(-50%,-50%) rotate(45deg) scale(1)!important; transition:none!important; }
   .mobile-heart-js .heart-message { opacity:1!important; transform:translate(-50%,-42%) scale(1)!important; transition:none!important; }
 }
-</style></head><body><main><header class="site-header"><a class="brand" href="#top" aria-label="曙光首页"><span class="brand-mark">S</span><span>中科曙光</span></a><nav aria-label="主导航"><a href="#about">关于曙光</a><a href="#innovation">创新动能</a><a href="#moment">时代现场</a><a href="#camp">黄埔八期</a></nav><a class="header-link" href="https://www.sugon.com/" target="_blank" rel="noreferrer">了解更多 <span aria-hidden="true">↗</span></a></header><section class="hero" id="top"><div class="hero-copy"><p class="eyebrow"><span>01</span> 计算驱动未来</p><h1>让算力，<br/>抵达每一种未来。</h1><p class="hero-intro">从核心技术到产业生态，以先进计算构筑数字中国的坚实底座。</p><a class="primary-link" href="#about" data-scroll-target="about">开启探索 <span aria-hidden="true">↓</span></a></div><figure class="hero-visual"><img src="images/skyline-sunset.webp" alt="夕阳下的中科曙光大厦与城市天际线" width="1122" height="1402" loading="eager" fetchPriority="high" decoding="async"/><figcaption><span>40°03′N</span><span>北京 · 中国</span></figcaption></figure></section><section class="statement" id="about"><div class="section-label"><span>02</span><p>关于曙光<br/><small>ABOUT SUGON</small></p></div><div class="statement-copy"><p class="lead">以科技之光，照见数字世界的更多可能。</p><p>曙光持续深耕高端计算、存储、安全与数据中心等领域，让更强大的计算能力服务科研突破、产业升级与社会发展。</p></div></section><section class="campus-feature"><div class="image-frame image-frame--wide"><img src="images/campus-day.webp" alt="蓝天白云下的中科曙光产业创新中心" width="1122" height="1402" loading="lazy" decoding="async"/></div><div class="feature-note"><h2>创新，不止发生在实验室。</h2><p>开放协同，让技术穿越场景，汇聚成真实的产业动能。</p></div></section><section class="innovation" id="innovation"><div class="innovation-art"><img class="circuit-base" src="images/circuit.webp" alt="抽象计算芯片与电路图形" width="1254" height="1254" loading="lazy" decoding="async"/></div><div class="innovation-copy"><p class="eyebrow eyebrow--light"><span>03</span> 创新动能</p><p class="kicker">从一束微光，<br/>到万千算力。</p><p class="innovation-body">探索计算边界，将复杂系统凝练为稳定、开放、持续演进的数字基础设施。</p><div class="metrics" aria-label="创新关键词"><div><strong>高端计算</strong><small>COMPUTING</small></div><div><strong>智能存储</strong><small>STORAGE</small></div><div><strong>数字基础设施</strong><small>INFRASTRUCTURE</small></div></div></div></section><section class="moment" id="moment"><div class="moment-heading"><p class="eyebrow"><span>04</span> 时代现场</p><h2>曙光，因你而不凡。</h2><p>每一次相聚，都是面向未来的一次共同出发。</p></div><figure class="stage-image"><img src="images/event-stage.webp" alt="中科曙光活动现场，舞台上展示曙光因你而不凡" width="1672" height="941" loading="lazy" decoding="async"/><figcaption>年度盛会 / 共同见证</figcaption></figure></section><section class="camp-story" id="camp"><div class="camp-heading"><p class="eyebrow"><span>05</span> 荣耀时刻</p><h2>荣聚曙光，<br/>梦想启航。</h2><div class="camp-meta"><p>2026 中科曙光集团应届生训战营</p><span>黄埔八期 · 现场纪实</span></div></div><div class="heart-scroll"><div class="heart-sticky"><div class="heart-wall" aria-label="黄埔八期活动照片墙"><span class="heart-core" aria-hidden="true"></span><figure class="heart-photo"><img src="images/event-camp-06.webp" alt="荣聚曙光梦想启航应届生训战营主视觉" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-01.webp" alt="有所为有所不为主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-03.webp" alt="人生能有几回搏主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-05.webp" alt="应届生训战营国旗仪式现场" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-02.webp" alt="技术顶天应用立地主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-04.webp" alt="荣聚曙光梦想启航户外旗帜" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-07.webp" alt="训战营现场红色主题装置" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-08.webp" alt="前行必有曙光现场导视" width="1600" height="900" loading="lazy" decoding="async"/></figure><div class="heart-user-photo" data-user-photo aria-hidden="true"><img alt=""/></div><div class="heart-message"><span>08</span><strong>同心同行</strong><small>共赴新程</small><label class="heart-upload"><span data-heart-upload-label>＋ 上传我的瞬间</span><input data-heart-upload type="file" accept="image/*" aria-label="上传一张照片加入照片墙"/></label></div><div class="heart-photo-flight" data-flight-photo aria-hidden="true"><img alt=""/></div></div></div></div></section><section class="future" id="future"><div class="future-image"><img src="images/supercomputing-center.webp" alt="国家超级计算互联网建筑与中国国旗" width="1448" height="1086" loading="lazy" decoding="async"/></div><div class="future-copy"><p class="eyebrow"><span>06</span> 共赴未来</p><h2>连接算力，<br/>连接无限可能。</h2><p>立足中国，服务全球。与每一位同行者，共建开放、普惠、可持续的先进计算生态。</p><a class="text-link" href="#top" data-scroll-target="top">回到顶部 <span aria-hidden="true">↑</span></a></div></section><footer><div class="footer-brand">Sugon</div><p>曙光，因你而不凡</p><p class="copyright">© 2026 中科曙光 · 概念展示页</p></footer></main><script data-heart-wall="mobile-observer">
+
+</style></head><body><main><header class="site-header"><a class="brand" href="#top" aria-label="曙光首页"><span class="brand-mark">S</span><span>中科曙光</span></a><nav aria-label="主导航"><a href="#about">关于曙光</a><a href="#innovation">创新动能</a><a href="#moment">时代现场</a><a href="#camp">黄埔八期</a></nav><a class="header-link" href="https://www.sugon.com/" target="_blank" rel="noreferrer">了解更多 <span aria-hidden="true">↗</span></a></header><section class="hero" id="top"><div class="hero-copy"><p class="eyebrow"><span>01</span> 计算驱动未来</p><h1>让算力，<br/>抵达每一种未来。</h1><p class="hero-intro">从核心技术到产业生态，以先进计算构筑数字中国的坚实底座。</p><a class="primary-link" href="#about" data-scroll-target="about">开启探索 <span aria-hidden="true">↓</span></a></div><figure class="hero-visual"><img src="images/skyline-sunset.webp" alt="夕阳下的中科曙光大厦与城市天际线" width="1122" height="1402" loading="eager" fetchPriority="high" decoding="async"/><figcaption><span>40°03′N</span><span>北京 · 中国</span></figcaption></figure></section><section class="statement" id="about"><div class="section-label"><span>02</span><p>关于曙光<br/><small>ABOUT SUGON</small></p></div><div class="statement-copy"><p class="lead">以科技之光，照见数字世界的更多可能。</p><p>曙光持续深耕高端计算、存储、安全与数据中心等领域，让更强大的计算能力服务科研突破、产业升级与社会发展。</p></div></section><section class="campus-feature"><div class="image-frame image-frame--wide"><img src="images/campus-day.webp" alt="蓝天白云下的中科曙光产业创新中心" width="1122" height="1402" loading="lazy" decoding="async"/></div><div class="feature-note"><h2>创新，不止发生在实验室。</h2><p>开放协同，让技术穿越场景，汇聚成真实的产业动能。</p></div></section><section class="innovation" id="innovation"><div class="innovation-art"><img class="circuit-base" src="images/circuit.webp" alt="抽象计算芯片与电路图形" width="1254" height="1254" loading="lazy" decoding="async"/></div><div class="innovation-copy"><p class="eyebrow eyebrow--light"><span>03</span> 创新动能</p><p class="kicker">从一束微光，<br/>到万千算力。</p><p class="innovation-body">探索计算边界，将复杂系统凝练为稳定、开放、持续演进的数字基础设施。</p><div class="metrics" aria-label="创新关键词"><div><strong>高端计算</strong><small>COMPUTING</small></div><div><strong>智能存储</strong><small>STORAGE</small></div><div><strong>数字基础设施</strong><small>INFRASTRUCTURE</small></div></div></div></section><section class="moment" id="moment"><div class="moment-heading"><p class="eyebrow"><span>04</span> 时代现场</p><div class="moment-title"><h2>曙光，因你而不凡。</h2><a class="join-link" href="https://sugon.zhiye.com" target="_blank" rel="noreferrer">加入我们 <span aria-hidden="true">↗</span></a></div><p>每一次相聚，都是面向未来的一次共同出发。</p></div><figure class="stage-image"><img src="images/event-stage.webp" alt="中科曙光活动现场，舞台上展示曙光因你而不凡" width="1672" height="941" loading="lazy" decoding="async"/><figcaption>年度盛会 / 共同见证</figcaption></figure></section><section class="camp-story" id="camp"><div class="camp-heading"><p class="eyebrow"><span>05</span> 荣耀时刻</p><h2>荣聚曙光，<br/>梦想启航。</h2><div class="camp-meta"><p>2026 中科曙光集团应届生训战营</p><span>黄埔八期 · 现场纪实</span></div></div><div class="heart-scroll"><div class="heart-sticky"><div class="heart-wall" aria-label="黄埔八期活动照片墙"><span class="heart-core" aria-hidden="true"></span><figure class="heart-photo"><img src="images/event-camp-06.webp" alt="荣聚曙光梦想启航应届生训战营主视觉" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-01.webp" alt="有所为有所不为主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-03.webp" alt="人生能有几回搏主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-05.webp" alt="应届生训战营国旗仪式现场" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-02.webp" alt="技术顶天应用立地主题展陈" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-04.webp" alt="荣聚曙光梦想启航户外旗帜" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-07.webp" alt="训战营现场红色主题装置" width="1600" height="900" loading="lazy" decoding="async"/></figure><figure class="heart-photo"><img src="images/event-camp-08.webp" alt="前行必有曙光现场导视" width="1600" height="900" loading="lazy" decoding="async"/></figure><div class="heart-user-wall" data-user-photo data-density="small" aria-hidden="true"></div><div class="heart-message"><span>08</span><strong>同心同行</strong><small>共赴新程</small><label class="heart-upload"><span data-heart-upload-label>＋ 上传我的瞬间</span><input data-heart-upload type="file" accept="image/*" aria-label="上传一张照片加入照片墙"/></label></div><div class="heart-flight-layer" data-flight-photo aria-hidden="true"></div></div></div></div></section><section class="future" id="future"><div class="future-image"><img src="images/supercomputing-center.webp" alt="国家超级计算互联网建筑与中国国旗" width="1448" height="1086" loading="lazy" decoding="async"/></div><div class="future-copy"><p class="eyebrow"><span>06</span> 共赴未来</p><h2>连接算力，<br/>连接无限可能。</h2><p>立足中国，服务全球。与每一位同行者，共建开放、普惠、可持续的先进计算生态。</p><a class="text-link" href="#top" data-scroll-target="top">回到顶部 <span aria-hidden="true">↑</span></a></div></section><footer><div class="footer-brand">Sugon</div><p>曙光，因你而不凡</p><p class="copyright">© 2026 中科曙光 · 概念展示页</p></footer></main><script data-heart-wall="mobile-observer">
 
 (() => {
   const wall = document.querySelector('.heart-scroll');
@@ -290,17 +299,14 @@ footer p { margin:0; white-space:nowrap; }
   const message = wall.querySelector('.heart-message');
   const upload = wall.querySelector('[data-heart-upload]');
   const uploadLabel = wall.querySelector('[data-heart-upload-label]');
-  const userPhoto = wall.querySelector('[data-user-photo]');
-  const userPhotoImage = userPhoto?.querySelector('img');
-  const flight = wall.querySelector('[data-flight-photo]');
-  const flightImage = flight?.querySelector('img');
+  const userPhotoWall = wall.querySelector('[data-user-photo]');
+  const flightLayer = wall.querySelector('[data-flight-photo]');
   let observer;
   let gearObserver;
   let leaveTimer;
   let scrollTimer;
   let frame;
-  let userPhotoUrl;
-  let uploadSequence = 0;
+  const userPhotoUrls = [];
   let desktopAnimations = [];
   let coreAnimation;
   let messageAnimation;
@@ -393,88 +399,142 @@ footer p { margin:0; white-space:nowrap; }
     });
   };
 
+  const halton = (index, base) => {
+    let fraction = 1;
+    let result = 0;
+    while (index > 0) {
+      fraction /= base;
+      result += fraction * (index % base);
+      index = Math.floor(index / base);
+    }
+    return result;
+  };
+
+  const preferredHeartSlots = [
+    { left: 40, top: 34, rotate: -7 },
+    { left: 60, top: 34, rotate: 7 },
+    { left: 50, top: 51, rotate: -2 },
+    { left: 34, top: 52, rotate: -9 },
+    { left: 66, top: 52, rotate: 9 },
+    { left: 42, top: 68, rotate: -6 },
+    { left: 58, top: 68, rotate: 6 },
+    { left: 50, top: 82, rotate: 0 },
+    { left: 26, top: 38, rotate: -11 },
+    { left: 74, top: 38, rotate: 11 },
+    { left: 28, top: 61, rotate: -8 },
+    { left: 72, top: 61, rotate: 8 },
+  ];
+
+  const heartPoint = (index) => {
+    if (index < preferredHeartSlots.length) return preferredHeartSlots[index];
+    let sample = index + 1;
+    for (let attempt = 0; attempt < 90; attempt += 1, sample += 17) {
+      const x = halton(sample, 2) * 2.5 - 1.25;
+      const y = halton(sample, 3) * 2.4 - 1.1;
+      const inside = Math.pow(x * x + y * y - 1, 3) - x * x * Math.pow(y, 3) <= 0;
+      if (inside) {
+        return {
+          left: 50 + x * 28,
+          top: 50 - y * 31,
+          rotate: ((index * 29) % 19) - 9,
+        };
+      }
+    }
+    return { left: 50, top: 50, rotate: 0 };
+  };
+
+  const updateUserDensity = () => {
+    if (!userPhotoWall) return;
+    const count = userPhotoUrls.length;
+    userPhotoWall.dataset.density = count > 14 ? 'dense' : count > 6 ? 'medium' : 'small';
+  };
+
+  const animateUserTile = async (url, index, delay) => {
+    if (!userPhotoWall) return;
+    if (delay) await new Promise((resolve) => window.setTimeout(resolve, delay));
+
+    const point = heartPoint(index);
+    const tile = document.createElement('figure');
+    const tileImage = document.createElement('img');
+    tile.className = 'heart-user-tile';
+    tile.style.left = point.left + '%';
+    tile.style.top = point.top + '%';
+    tile.style.setProperty('--ur', point.rotate + 'deg');
+    tileImage.src = url;
+    tileImage.alt = '';
+    tile.append(tileImage);
+    userPhotoWall.append(tile);
+
+    if (reducedMotion.matches || !flightLayer) {
+      tile.classList.add('is-settled');
+      return;
+    }
+
+    const targetRect = tile.getBoundingClientRect();
+    const triggerRect = uploadLabel?.parentElement?.getBoundingClientRect();
+    const targetX = targetRect.left + targetRect.width / 2;
+    const targetY = targetRect.top + targetRect.height / 2;
+    const startX = mobile.matches
+      ? targetX
+      : (triggerRect ? triggerRect.left + triggerRect.width / 2 : targetX) - Math.min(190, window.innerWidth * .14);
+    const startY = Math.min(window.innerHeight - 42, (triggerRect?.bottom || targetY) + (mobile.matches ? 135 : 190));
+    const dx = startX - targetX;
+    const dy = startY - targetY;
+    const flight = document.createElement('div');
+    const flightImage = document.createElement('img');
+    flight.className = 'heart-photo-flight is-flying';
+    flightImage.src = url;
+    flightImage.alt = '';
+    flight.append(flightImage);
+    Object.assign(flight.style, {
+      left: targetRect.left + 'px',
+      top: targetRect.top + 'px',
+      width: targetRect.width + 'px',
+      height: targetRect.height + 'px',
+    });
+    flightLayer.append(flight);
+
+    const duration = mobile.matches ? 680 : 860;
+    const animation = flight.animate([
+      { opacity: 0, transform: 'translate(' + dx + 'px,' + dy + 'px) rotate(-9deg) scale(.22)', filter: 'blur(12px) saturate(.72)' },
+      { opacity: 1, offset: .18, transform: 'translate(' + (dx * .74) + 'px,' + (dy * .64 - 24) + 'px) rotate(-5deg) scale(.46)', filter: 'blur(5px) saturate(.9)' },
+      { opacity: 1, offset: .76, transform: 'translate(' + (dx * .08) + 'px,' + (dy * .04 - (mobile.matches ? 18 : 42)) + 'px) rotate(3deg) scale(1.04)', filter: 'blur(0) saturate(1.06)' },
+      { opacity: 0, transform: 'translate(0,0) rotate(0) scale(1)', filter: 'blur(0) saturate(1)' },
+    ], { duration, easing: 'cubic-bezier(.2,.72,.16,1)', fill: 'both' });
+
+    window.setTimeout(() => tile.classList.add('is-settled'), duration * .72);
+    await animation.finished.catch(() => {});
+    flight.remove();
+  };
+
   const placeUserPhoto = async (file) => {
-    const sequence = ++uploadSequence;
-    const nextUrl = URL.createObjectURL(file);
-    uploadLabel && (uploadLabel.textContent = '汇入中…');
+    if (!file || !file.type.startsWith('image/')) return;
+    uploadLabel && (uploadLabel.textContent = '第 ' + (userPhotoUrls.length + 1) + ' 张汇入中…');
+    if (upload) upload.disabled = true;
 
+    const url = URL.createObjectURL(file);
     try {
-      await decodeImage(nextUrl);
-      if (sequence !== uploadSequence) {
-        URL.revokeObjectURL(nextUrl);
-        return;
-      }
-
-      if (reducedMotion.matches || !flight || !flightImage || !userPhoto || !userPhotoImage) {
-        userPhotoImage && (userPhotoImage.src = nextUrl);
-        userPhoto?.classList.add('is-filled');
-      } else {
-        const triggerRect = uploadLabel?.parentElement?.getBoundingClientRect();
-        const targetRect = userPhoto.getBoundingClientRect();
-        const targetX = targetRect.left + targetRect.width / 2;
-        const targetY = targetRect.top + targetRect.height / 2;
-        const startX = mobile.matches
-          ? targetX
-          : (triggerRect ? triggerRect.left + triggerRect.width / 2 : targetX) - Math.min(220, window.innerWidth * .16);
-        const startY = Math.min(window.innerHeight - 58, (triggerRect?.bottom || targetY) + (mobile.matches ? 150 : 210));
-        const dx = startX - targetX;
-        const dy = startY - targetY;
-
-        userPhoto.classList.remove('is-filled');
-        flightImage.src = nextUrl;
-        Object.assign(flight.style, {
-          left: targetRect.left + 'px',
-          top: targetRect.top + 'px',
-          width: targetRect.width + 'px',
-          height: targetRect.height + 'px',
-        });
-        flight.classList.add('is-flying');
-
-        const keyframes = mobile.matches ? [
-          { opacity: 0, transform: 'translate(' + dx + 'px,' + dy + 'px) scale(.28)', filter: 'blur(14px) saturate(.72)' },
-          { opacity: 1, offset: .2, transform: 'translate(' + (dx * .72) + 'px,' + (dy * .62) + 'px) scale(.48)', filter: 'blur(5px) saturate(.9)' },
-          { opacity: 1, offset: .78, transform: 'translate(0,0) scale(1.04)', filter: 'blur(0) saturate(1.05)' },
-          { opacity: 0, transform: 'translate(0,0) scale(1)', filter: 'blur(0) saturate(1)' },
-        ] : [
-          { opacity: 0, transform: 'translate(' + dx + 'px,' + dy + 'px) rotate(-10deg) scale(.2)', filter: 'blur(16px) saturate(.7)' },
-          { opacity: 1, offset: .16, transform: 'translate(' + (dx * .78) + 'px,' + (dy * .72 - 28) + 'px) rotate(-7deg) scale(.42)', filter: 'blur(7px) saturate(.88)' },
-          { opacity: 1, offset: .62, transform: 'translate(' + (dx * .28) + 'px,' + (dy * .22 - 70) + 'px) rotate(5deg) scale(.82)', filter: 'blur(1px) saturate(1.08)' },
-          { opacity: 1, offset: .84, transform: 'translate(0,0) rotate(0) scale(1.04)', filter: 'blur(0) saturate(1.05)' },
-          { opacity: 0, transform: 'translate(0,0) rotate(0) scale(1)', filter: 'blur(0) saturate(1)' },
-        ];
-        const animation = flight.animate(keyframes, {
-          duration: mobile.matches ? 1040 : 1260,
-          easing: 'cubic-bezier(.2,.72,.16,1)',
-          fill: 'both',
-        });
-
-        window.setTimeout(() => {
-          if (sequence !== uploadSequence) return;
-          userPhotoImage.src = nextUrl;
-          userPhoto.classList.add('is-filled');
-          celebrateUpload();
-        }, mobile.matches ? 760 : 930);
-        await animation.finished.catch(() => {});
-        flight.classList.remove('is-flying');
-        flightImage.removeAttribute('src');
-      }
-
-      if (userPhotoUrl && userPhotoUrl !== nextUrl) URL.revokeObjectURL(userPhotoUrl);
-      userPhotoUrl = nextUrl;
-      uploadLabel && (uploadLabel.textContent = '换一张我的瞬间');
+      await decodeImage(url);
     } catch {
-      URL.revokeObjectURL(nextUrl);
+      URL.revokeObjectURL(url);
       uploadLabel && (uploadLabel.textContent = '图片读取失败，请重试');
-    } finally {
-      if (upload) upload.value = '';
+      if (upload) upload.disabled = false;
+      return;
+    }
+
+    const index = userPhotoUrls.length;
+    userPhotoUrls.push(url);
+    updateUserDensity();
+    await animateUserTile(url, index, 0);
+    celebrateUpload();
+    uploadLabel && (uploadLabel.textContent = userPhotoUrls.length + ' 张已汇入 · 继续添加');
+    if (upload) {
+      upload.value = '';
+      upload.disabled = false;
     }
   };
 
-  upload?.addEventListener('change', () => {
-    const file = upload.files?.[0];
-    if (!file || !file.type.startsWith('image/')) return;
-    placeUserPhoto(file);
-  });
+  upload?.addEventListener('change', () => placeUserPhoto(upload.files?.[0]));
 
   document.querySelectorAll('[data-scroll-target]').forEach((link) => {
     link.addEventListener('click', (event) => {
@@ -547,7 +607,7 @@ footer p { margin:0; white-space:nowrap; }
     window.removeEventListener('scroll', onScroll);
     window.removeEventListener('resize', setup);
     reducedMotion.removeEventListener?.('change', setupGear);
-    if (userPhotoUrl) URL.revokeObjectURL(userPhotoUrl);
+    userPhotoUrls.forEach((url) => URL.revokeObjectURL(url));
   }, { once: true });
 })();
 
